@@ -15,6 +15,16 @@ namespace cs341.Controllers
             return View();
         }
 
+        public ActionResult GetResults()
+        {
+            return PartialView("ResultsView", new ResultsViewModel());
+        }
+
+        public ActionResult GetResult()
+        {
+            return PartialView("ResultView", new ResultViewModel());
+        }
+
         public ActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

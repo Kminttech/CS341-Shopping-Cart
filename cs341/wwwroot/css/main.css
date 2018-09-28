@@ -133,3 +133,15 @@
     float: right;
     margin: 10px;
 }
+
+
+.btn-md {
+    border: 3px solid black;
+    border-radius: 5px;
+}
+
+
+#login-btn:hover{
+    cursor: pointer;
+    background-color: blue;
+}

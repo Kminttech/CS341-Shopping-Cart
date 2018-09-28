@@ -48,13 +48,20 @@
     <Content Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
     <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\.bower.json" />
     <Content Remove="Views\_ViewImports.cshtml" />
+    <Content Remove="Index.cshtml" />
+    <Content Remove="wwwroot\js\routes.js" />
+    <Content Remove="Models\Structures\Index.cshtml" />
+    <Content Remove="wwwroot\js\EmptyJSFile.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="Models\Structures\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\images\Placeholder.png" />
+    <None Include="wwwroot\js\routes.js" />
+    <None Include="wwwroot\js\main.js" />
   </ItemGroup>
 </Project>
