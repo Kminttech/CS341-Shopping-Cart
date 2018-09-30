@@ -1,6 +1,6 @@
 ﻿namespace cs341.Structures
 {
-    public class Product
+    public class Item
     {
         int Id { get; set; }
         string Name { get; set; }

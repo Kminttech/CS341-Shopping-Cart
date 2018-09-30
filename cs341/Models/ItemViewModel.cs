@@ -3,9 +3,9 @@ using cs341.Structures;
 
 namespace cs341.Models
 {
-    public class ResultViewModel
+    public class ItemViewModel
     {
-        public Product Product { get; set; }
+        public Item Item { get; set; }
         public User User { get; set; }
     }
 }

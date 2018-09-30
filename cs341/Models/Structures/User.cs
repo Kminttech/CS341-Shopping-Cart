@@ -9,6 +9,6 @@ namespace cs341.Structures
         int Id { get; set; }
         string Username { get; set; }
         bool? IsAdmin { get; set; }
-        List<Product> Cart { get; set; }
+        List<Item> Cart { get; set; }
     }
 }

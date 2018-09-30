@@ -8,6 +8,6 @@ namespace cs341.Structures
     {
         int Id { get; set; }
         string Name { get; set; }
-        List<Product> Products { get; set; }
+        List<Item> Items { get; set; }
     }
 }

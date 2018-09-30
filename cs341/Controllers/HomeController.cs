@@ -22,7 +22,7 @@ namespace cs341.Controllers
 
         public ActionResult GetResult()
         {
-            return PartialView("ResultView", new ResultViewModel());
+            return PartialView("ItemView", new ItemViewModel());
         }
 
         public ActionResult Error()
