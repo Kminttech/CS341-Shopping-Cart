@@ -9,6 +9,7 @@ namespace cs341.Structures
         int Id { get; set; }
         string Username { get; set; }
         bool? IsAdmin { get; set; }
-        List<Item> Cart { get; set; }
+        bool? IsGuest { get; set; }
+        Dictionary<Item, int> Cart { get; set; }
     }
 }

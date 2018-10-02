@@ -6,6 +6,6 @@
         string Name { get; set; }
         string Description { get; set; }
         decimal Price { get; set; }
-        int? Quantitiy { get; set; }
+        decimal? SalePrice { get; set; }
     }
 }

@@ -8,5 +8,8 @@ namespace cs341.Structures
     {
         int Id { get; set; }
         string Name { get; set; }
+        string Code { get; set; }
+        decimal PercentOff { get; set; }
+        List<Item> SaleItems { get; set; }
     }
 }

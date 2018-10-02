@@ -25,23 +25,28 @@
         -log in
     -->
     <div id="navbar" class="navbar">
-        <i class="fa fa-3x fa-spin fa-dice" onclick"routeHome()"></i>
-        <div id="navbarUser" class="user">Guest
-            <i class="fa fa-lg fa-user"></i>
-            <div id="login-btn" class=btn onclick="logIn()">Log In</div>
+        <div id="home">
+            Code n' Coffee Games
+            <i class="fa fa-lg fa-dice" onclick"routeHome()"></i>
         </div>
-        <ul class="dropdownMenu">
-            <li class="dropdown-li">
-                <div class="dropdown-div">
-                    <span class="dropdownbtn">Example ddButton</span>
-                    <div class="dropdownContent">
-                        <div onclick="routeToResults()"> Example link1 </div>
-                        <a href="#">Example link2</a>
-                        <a href="#">Example link3</a>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <div id="navbarBtns">
+            <div class="btn" onclick="routeToResults()">
+                Browse Products
+                <i class="fa fa-lg fa-chess"></i>
+            </div>
+        </div>
+        <div id="navbarUser" class="user">
+            Guest
+            <i class="fa fa-lg fa-user"></i>
+            <div id="login-btn" class="btn" onclick="logIn()">
+                Log In
+                <i class="fa fa-lg fa-sign-in-alt"></i>
+            </div>
+            <div class="btn" onclick="routeToCart()">
+                Cart
+                <i class="fa fa-lg fa-shopping-cart"></i>
+            </div>
+        </div>
     </div>
     <div id="main-content">
         <h2 id="homeName" class="companyName">Website Name</h2>

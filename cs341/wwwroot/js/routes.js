@@ -17,10 +17,15 @@ function route(page){
             }
         });
 }
+
+function routeHome() {
+    route("/Home/Index");
+}
+
 function routeToResults() {
     route("/Home/GetResults");
 }
 
-function routeToResults() {
-    route("/Home/Index");
+function routeToCart(){
+    route("/Home/GetCart");
 }

@@ -25,6 +25,11 @@ namespace cs341.Controllers
             return PartialView("ItemView", new ItemViewModel());
         }
 
+        public ActionResult GetCart()
+        {
+            return PartialView("CartView", new CartViewModel());
+        }
+
         public ActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

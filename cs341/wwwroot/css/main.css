@@ -93,13 +93,15 @@
 
 #homeName {
     text-align: center;
-    margin: 10px;
+    margin: 1em;
 }
 
 #navbar {
     border: 1px solid purple;
     background-color: orchid;
     min-height: 60px;
+    padding: 5px;
+    display: flex;
 }
 
     #navbar img {
@@ -130,18 +132,36 @@
     }
 
 #navbarUser {
-    float: right;
+    order: 3;
+    justify-content: flex-end;
+    align-self: center;
     margin: 10px;
 }
 
 
-.btn-md {
-    border: 3px solid black;
+.btn {
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    height: 30px;
+    border: 2px solid black;
     border-radius: 5px;
 }
 
 
-#login-btn:hover{
+.btn:hover{
     cursor: pointer;
     background-color: blue;
+}
+
+#home{
+    font-size: 2em;
+    order: 1;
+    align-self: center;
+}
+
+#navbarBtns {
+    order: 2;
+    flex-grow: 2;
+    align-self: center;
 }
