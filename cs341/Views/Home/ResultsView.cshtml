@@ -1,9 +1,18 @@
 ﻿@*
     Results View
 *@
-@{
-    
-}
-<div id="results">
-    HERE GOES THE RESULTS
+@using cs341.Structures
+@model cs341.Models.ResultsViewModel
+
+<div id="browse">
+    <h1 class="heading">Browse</h1>
+    <div id="results">
+        @foreach (Item item in Model.Items)
+        {
+            <div class="results-item">
+                <div class="results-item-name">@item.Name</div>
+                <div class="results-item-price">@item.Price</div>
+            </div>
+        }
+    </div>
 </div>

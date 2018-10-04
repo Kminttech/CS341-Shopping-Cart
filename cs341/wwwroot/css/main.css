@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+h1 {
+    text-align: center;
+}
+
 #categoryMenus > .category {
     border: 1px solid black;
     background-color: gold;
@@ -143,7 +147,8 @@
     display: inline-block;
     text-align: center;
     width: 100px;
-    height: 30px;
+    height: 20px;
+    padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
 }
@@ -158,6 +163,7 @@
     font-size: 2em;
     order: 1;
     align-self: center;
+    margin-right: 100px;
 }
 
 #navbarBtns {
@@ -165,3 +171,18 @@
     flex-grow: 2;
     align-self: center;
 }
+
+#results > .results-item {
+    border: 1px solid black;
+    background-color: gold;
+    display: inline-block;
+    padding: 15px;
+    margin: 20px;
+    max-width: 150px;
+}
+
+    #results > .results-item > div {
+        display: block;
+        padding-top: 5px;
+        text-align: center;
+    }

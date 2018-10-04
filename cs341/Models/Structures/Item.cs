@@ -2,10 +2,10 @@
 {
     public class Item
     {
-        int Id { get; set; }
-        string Name { get; set; }
-        string Description { get; set; }
-        decimal Price { get; set; }
-        decimal? SalePrice { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public decimal? SalePrice { get; set; }
     }
 }

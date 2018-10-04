@@ -6,10 +6,10 @@ namespace cs341.Structures
 {
     public class User
     {
-        int Id { get; set; }
-        string Username { get; set; }
-        bool? IsAdmin { get; set; }
-        bool? IsGuest { get; set; }
-        Dictionary<Item, int> Cart { get; set; }
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public bool? IsAdmin { get; set; }
+        public bool? IsGuest { get; set; }
+        public Dictionary<Item, int> Cart { get; set; }
     }
 }

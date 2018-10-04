@@ -1,5 +1,6 @@
 ﻿using System;
 using cs341.Structures;
+using System.Collections.Generic;
 
 namespace cs341.Models
 {
