@@ -62,6 +62,11 @@ namespace cs341.Controllers
             return View();
         }
 
+        public ActionResult Home()
+        {
+            return View("Index");
+        }
+
         public ActionResult GetResults()
         {
             return PartialView("ResultsView", results);
@@ -75,6 +80,19 @@ namespace cs341.Controllers
         public ActionResult GetCart()
         {
             return PartialView("CartView", cart);
+        }
+
+        public ActionResult Register()
+        {
+            return PartialView("RegisterView");
+        }
+
+        public ActionResult RegisterUser()
+        {
+            //Database Stuff
+            //return worked or not partial view :)
+            return null;
+
         }
 
         public ActionResult Error()

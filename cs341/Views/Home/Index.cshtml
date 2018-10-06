@@ -26,10 +26,14 @@
     -->
     <div id="navbar" class="navbar">
         <div id="home">
-            Code n' Coffee Games
+            Coffee n' Code Games
             <i class="fa fa-lg fa-dice" onclick"routeHome()"></i>
         </div>
         <div id="navbarBtns">
+            <div class="btn" onclick="routeHome()">
+                Home
+                <i class="fa fa-lg fa-home"></i>
+            </div>
             <div class="btn" onclick="routeToResults()">
                 Browse 
                 <i class="fa fa-lg fa-chess"></i>
@@ -42,6 +46,10 @@
                 Log In 
                 <i class="fa fa-lg fa-sign-in-alt"></i>
             </div>
+            <div id="register-btn" class="btn" onclick="routeToRegister()">
+                Register
+                <i class="fa fa-lg fa-user-plus"></i>
+            </div>
             <div class="btn" onclick="routeToCart()">
                 Cart 
                 <i class="fa fa-lg fa-shopping-cart"></i>
@@ -49,20 +57,12 @@
         </div>
     </div>
     <div id="main-content">
-        <!--
-            Category menus currently includes:
-            - Categories that our board games are classified into
-
-            TODO:
-            -link tabs to "shop by catagory" page
-            -make catagories
-        -->
-        <div class="categoryMenus" id="categoryMenus">
-            <h3>Shop by Category:</h3>
-            <div class="category">
-                <img src="images/Placeholder.png" class="menuImg">
-                <span>Catagory Caption</span>
-            </div>
+        <div id="home-dice">
+            <i class="fa fa-spin fa-dice"></i>
+            <i class="fa fa-spin fa-gamepad"></i>
+            <i class="fa fa-spin fa-gavel"></i>
+            <i class="fa fa-spin fa-trophy"></i>
+            <i class="fa fa-spin fa-chess"></i>
         </div>
     </div>
     <!--
