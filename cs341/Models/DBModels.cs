@@ -1,0 +1,63 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace cs341.Models
+{
+    public class CartContext : DbContext
+    {
+        public CartContext(DbContextOptions<CartContext> options)
+            : base(options)
+        { }
+
+        public DbSet<Item> Blogs { get; set; }
+        public DbSet<Category> Posts { get; set; }
+        public DbSet<CartEntry> CartEntries { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
+    }
+
+    public class Item
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public decimal? SalePrice { get; set; }
+        public string ImageLOC { get; set; }
+    }
+
+    public class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<Item> Items { get; set; }
+    }
+
+    public class CartEntry
+    {
+        public int Id { get; set; }
+        public Item EntryItem { get; set; }
+        public int quantitiy { get; set; }
+    }
+
+    public class User
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public bool? IsAdmin { get; set; }
+        public bool? IsGuest { get; set; }
+        public List<CartEntry> Cart { get; set; }
+    }
+
+    public class Promotion
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Code { get; set; }
+        public decimal PercentOff { get; set; }
+        public List<Item> SaleItems { get; set; }
+    }
+}
