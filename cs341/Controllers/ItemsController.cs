@@ -21,7 +21,7 @@ namespace cs341.Controllers
         // GET: Items
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Blogs.ToListAsync());
+            return View(await _context.Items.ToListAsync());
         }
 
         // GET: Items/Details/5
@@ -32,7 +32,7 @@ namespace cs341.Controllers
                 return NotFound();
             }
 
-            var item = await _context.Blogs
+            var item = await _context.Items
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (item == null)
             {
@@ -72,7 +72,7 @@ namespace cs341.Controllers
                 return NotFound();
             }
 
-            var item = await _context.Blogs.SingleOrDefaultAsync(m => m.Id == id);
+            var item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
             if (item == null)
             {
                 return NotFound();
@@ -123,7 +123,7 @@ namespace cs341.Controllers
                 return NotFound();
             }
 
-            var item = await _context.Blogs
+            var item = await _context.Items
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (item == null)
             {
@@ -138,15 +138,15 @@ namespace cs341.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var item = await _context.Blogs.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Blogs.Remove(item);
+            var item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
+            _context.Items.Remove(item);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ItemExists(int id)
         {
-            return _context.Blogs.Any(e => e.Id == id);
+            return _context.Items.Any(e => e.Id == id);
         }
     }
 }

@@ -49,7 +49,7 @@ namespace cs341.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("cs341.Models.Item", b =>
@@ -77,7 +77,7 @@ namespace cs341.Migrations
 
                     b.HasIndex("PromotionId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("cs341.Models.Promotion", b =>

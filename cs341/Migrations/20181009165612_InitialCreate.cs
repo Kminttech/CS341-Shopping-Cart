@@ -10,7 +10,7 @@ namespace cs341.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Posts",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -19,7 +19,7 @@ namespace cs341.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Posts", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,7 +53,7 @@ namespace cs341.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Blogs",
+                name: "Items",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -68,15 +68,15 @@ namespace cs341.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Blogs", x => x.Id);
+                    table.PrimaryKey("PK_Items", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Blogs_Posts_CategoryId",
+                        name: "FK_Items_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Posts",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Blogs_Promotions_PromotionId",
+                        name: "FK_Items_Promotions_PromotionId",
                         column: x => x.PromotionId,
                         principalTable: "Promotions",
                         principalColumn: "Id",
@@ -97,9 +97,9 @@ namespace cs341.Migrations
                 {
                     table.PrimaryKey("PK_CartEntries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CartEntries_Blogs_EntryItemId",
+                        name: "FK_CartEntries_Items_EntryItemId",
                         column: x => x.EntryItemId,
-                        principalTable: "Blogs",
+                        principalTable: "Items",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -111,16 +111,6 @@ namespace cs341.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Blogs_CategoryId",
-                table: "Blogs",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Blogs_PromotionId",
-                table: "Blogs",
-                column: "PromotionId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CartEntries_EntryItemId",
                 table: "CartEntries",
                 column: "EntryItemId");
@@ -129,6 +119,16 @@ namespace cs341.Migrations
                 name: "IX_CartEntries_UserId",
                 table: "CartEntries",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_CategoryId",
+                table: "Items",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Items_PromotionId",
+                table: "Items",
+                column: "PromotionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -137,13 +137,13 @@ namespace cs341.Migrations
                 name: "CartEntries");
 
             migrationBuilder.DropTable(
-                name: "Blogs");
+                name: "Items");
 
             migrationBuilder.DropTable(
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Posts");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Promotions");

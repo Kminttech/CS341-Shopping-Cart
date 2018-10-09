@@ -12,8 +12,8 @@ namespace cs341.Models
             : base(options)
         { }
 
-        public DbSet<Item> Blogs { get; set; }
-        public DbSet<Category> Posts { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<CartEntry> CartEntries { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Promotion> Promotions { get; set; }

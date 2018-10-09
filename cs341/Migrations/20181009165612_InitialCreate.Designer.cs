@@ -11,7 +11,7 @@ using System;
 namespace cs341.Migrations
 {
     [DbContext(typeof(CartContext))]
-    [Migration("20181009164608_InitialCreate")]
+    [Migration("20181009165612_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,7 +50,7 @@ namespace cs341.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("cs341.Models.Item", b =>
@@ -78,7 +78,7 @@ namespace cs341.Migrations
 
                     b.HasIndex("PromotionId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("cs341.Models.Promotion", b =>
