@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using cs341.Models;
-using cs341.Structures; // remove once database comes in
 
 namespace cs341.Controllers
 {
@@ -29,10 +28,7 @@ namespace cs341.Controllers
             Username = "admin",
             IsAdmin = true,
             IsGuest = false,
-            Cart = new Dictionary<Item, int>()
-            {
-                {item, 1}
-            }
+            Cart = new List<CartEntry>()
         };
 
         public static CartViewModel cart = new CartViewModel()
