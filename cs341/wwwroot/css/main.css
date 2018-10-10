@@ -187,8 +187,31 @@ h1 {
     max-width: 150px;
 }
 
+#results > .results-item:hover {
+    background-color: yellow;
+}
     #results > .results-item > div {
         display: block;
         padding-top: 5px;
         text-align: center;
+    }
+
+    #results .results-item-image{
+        width: 100%;
+        height: auto;
+    }
+
+#itemview-item{
+    margin: 20px;
+    padding: 12px 16px;
+    border-radius: 7px;
+    background-color: gold;
+}
+    #itemview-item > div {
+        display: inline-block;
+    }
+
+    .itemview-item-image {
+        width: 200px;
+        height: auto;
     }

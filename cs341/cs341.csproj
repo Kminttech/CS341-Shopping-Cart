@@ -54,14 +54,18 @@
     <Content Remove="Index.cshtml" />
     <Content Remove="wwwroot\js\routes.js" />
     <Content Remove="wwwroot\js\EmptyJSFile.js" />
+    <Content Remove="wwwroot\images\items\risk.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="wwwroot\images\items\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\images\Placeholder.png" />
     <None Include="wwwroot\js\routes.js" />
     <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\images\items\risk.jpg" />
   </ItemGroup>
 </Project>

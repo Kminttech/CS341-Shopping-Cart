@@ -40,7 +40,7 @@ namespace cs341.Models
     {
         public int Id { get; set; }
         public Item EntryItem { get; set; }
-        public int quantitiy { get; set; }
+        public int Quantitiy { get; set; }
     }
 
     public class User

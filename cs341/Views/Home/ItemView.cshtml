@@ -1,0 +1,30 @@
+﻿@*
+    Item View
+*@
+@model cs341.Models.ItemViewModel
+
+<div id="itemview">
+    <h1>@Model.Item.Name</h1>
+    <div id="itemview-item">
+        <img class="itemview-item-image" src="images/items/@Model.Item.ImageLOC">
+        <div itemview-item-container>
+            <div class="itemview-item-price">
+                <h2>Price</h2>
+                <i class="fa fa-dollar-sign"></i>
+                <span>@Model.Item.Price</span>
+            </div>
+            <div class="itemview-item-description">
+                <h2>Description</h2>
+                <p>@Model.Item.Description</p>
+            </div>
+            <div class="itemview-item-quantity">
+                <h2>Quantity</h2>
+                <input type="number" value="1">
+            </div>
+            <div class="btn">
+                Add to Cart
+                <i class="fa fa-cart-plus"></i>
+            </div>
+        </div>
+    </div>
+</div>

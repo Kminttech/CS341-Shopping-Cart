@@ -1,9 +1,9 @@
 ﻿// routes
-function route(page){
+function route(page, id){
     $.ajax({
             type: "GET",
             url: page,
-            data: {"data":page},
+            data: {"data":id},
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (data) {
@@ -48,4 +48,8 @@ function routeToCart(){
 
 function routeToRegister(){
     route("/Home/Register");
+}
+
+function routeToItem(id){
+    route("/Home/GetItem", id);
 }

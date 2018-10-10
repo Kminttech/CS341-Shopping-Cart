@@ -18,6 +18,7 @@ namespace cs341.Controllers
             Id = 0,
             Name = "Risk",
             Description = "Strategy game for parties",
+            ImageLOC = "risk.jpg",
             Price = (decimal)50.0,
             SalePrice = (decimal)30.0
         };
@@ -28,7 +29,10 @@ namespace cs341.Controllers
             Username = "admin",
             IsAdmin = true,
             IsGuest = false,
-            Cart = new List<CartEntry>()
+            Cart = new List<CartEntry>
+            {
+                { new CartEntry { Id = 0, EntryItem = item, Quantitiy = 1 } }
+            }
         };
 
         public static CartViewModel cart = new CartViewModel()
@@ -68,7 +72,7 @@ namespace cs341.Controllers
             return PartialView("ResultsView", results);
         }
 
-        public ActionResult GetResult()
+        public ActionResult GetItem(int id)
         {
             return PartialView("ItemView", itemView);
         }

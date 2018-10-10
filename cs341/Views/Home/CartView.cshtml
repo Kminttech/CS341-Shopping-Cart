@@ -1,23 +1,22 @@
 ﻿@*
     Cart
 *@
-@using cs341.Structures
+@using cs341.Models
 @model cs341.Models.CartViewModel
 
 <div id="cart">
     <h1 class="heading">Cart</h1>
     <div id="cart-container">
-        @foreach (KeyValuePair<Item, int> pair in Model.User.Cart)
+        @foreach (CartEntry entry in Model.User.Cart)
         {
-            Item item = pair.Key;
-            int quantity = pair.Value;
+            Item item = entry.EntryItem;
+            int quantity = entry.Quantitiy;
             <div class="cart-item">
                 <div class=cart-item-name>@item.Name</div>
                 <input class="cart-item-quantity" type="text" value="@quantity">
                 <div class=cart-item-price>@item.Price</div>
                 <div class=cart-item-description>@item.Description</div>
             </div>
-
         }
         <div></div>
     </div>

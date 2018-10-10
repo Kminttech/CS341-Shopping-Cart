@@ -1,7 +1,7 @@
 ﻿@*
     Results View
 *@
-@using cs341.Structures
+@using cs341.Models
 @model cs341.Models.ResultsViewModel
 
 <div id="browse">
@@ -24,9 +24,13 @@
     <div id="results">
         @foreach (Item item in Model.Items)
         {
-            <div class="results-item">
+            <div class="results-item" onclick="routeToItem(@item.Id)">
+                <img class ="results-item-image" src="images/items/@item.ImageLOC">
                 <div class="results-item-name">@item.Name</div>
-                <div class="results-item-price">@item.Price</div>
+                <div class="results-item-price">
+                    <i class="fa fa-dollar-sign"></i>
+                    @item.Price
+                </div>
             </div>
         }
     </div>
