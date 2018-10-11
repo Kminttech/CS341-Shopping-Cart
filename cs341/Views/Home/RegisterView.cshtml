@@ -1,17 +1,17 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+   Register User
 *@
 @{
 }
 <div id="register">
     <h1 class="heading">Register</h1>
-    <form action="\Home\RegisterUser" method="GET">
+    <div id="register-user">
         Username
-        <input type="text" value="Enter Username">
+        <input id="username-input" type="text" value="Enter Username">
         Password
         <input type="text" value="Enter Password">
         Email
         <input type="text" value="Enter Email">
-        <input type="submit" value="Register!">
-    </form>
+        <input type="submit" value="Register!" onclick="registerUser()">
+    </div>
 </div>

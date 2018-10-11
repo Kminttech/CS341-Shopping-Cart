@@ -64,7 +64,7 @@ namespace cs341.Controllers
 
         public ActionResult Home()
         {
-            return View("Index");
+            return PartialView("Home");
         }
 
         public ActionResult GetResults()
