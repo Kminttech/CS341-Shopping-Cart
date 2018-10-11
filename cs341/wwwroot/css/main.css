@@ -1,6 +1,19 @@
-﻿* {
+﻿:root {
+    --color1: #F1F4F1; /*light grey- used as body background and footer text*/
+    --color2: #A4B7A4; /*light green- used as div background color */
+    --color3: #6C896B; /*green      - used to indicate link on hover*/
+    --color4: #3F503F; /*green-grey - footer background*/
+    --color5: #172816; /*dark green - used for text*/
+}
+
+* {
     padding: 0;
     margin: 0;
+}
+
+body {
+    background-color: var(--color1);
+    color: var(--color5);
 }
 
 #home-dice {
@@ -14,7 +27,7 @@ h1 {
 
 #categoryMenus > .category {
     border: 1px solid black;
-    background-color: gold;
+    background-color: var(--color2);
     display: inline-block;
     padding: 15px;
     margin: 20px;
@@ -36,7 +49,7 @@ h1 {
 
 .dropdownbtn {
     color: black;
-    background-color: blue;
+    background-color: var(--color2);
     font-size: 30px;
     margin: 3px 3px 3px 3px;
     text-decoration: none;
@@ -66,7 +79,7 @@ h1 {
     }
 
         .dropdownContent a:hover {
-            background-color: gray;
+            background-color: var(--color3);
         }
 
 .dropdown-li:hover .dropdownContent {
@@ -75,7 +88,7 @@ h1 {
 
 .drop-down {
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--color2);
     cursor: pointer;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -84,11 +97,11 @@ h1 {
 }
 
 #footer {
-    color: black;
+    color: var(--color1);
     text-align: center;
-    background-color: red;
+    background-color: var(--color4);
+    padding: 2px;
     width: 100vw;
-    border-top: 1px solid black;
     bottom: 0;
     left: 0;
     right: 0;
@@ -107,8 +120,7 @@ h1 {
 }
 
 #navbar {
-    border: 1px solid purple;
-    background-color: orchid;
+    background-color: var(--color2);
     min-height: 60px;
     padding: 5px;
     display: flex;
@@ -155,15 +167,15 @@ h1 {
     width: 100px;
     height: 20px;
     padding: 10px;
-    border: 2px solid black;
+    border: 2px solid var(--color5);
     border-radius: 5px;
 }
 
 
-.btn:hover{
-    cursor: pointer;
-    background-color: blue;
-}
+    .btn:hover {
+        cursor: pointer;
+        background-color: var(--color3);
+    }
 
 #home{
     font-size: 2em;
@@ -179,8 +191,8 @@ h1 {
 }
 
 #results > .results-item {
-    border: 1px solid black;
-    background-color: gold;
+    border: 1px solid var(--color5);
+    background-color: var(--color2);
     display: inline-block;
     padding: 15px;
     margin: 20px;
@@ -188,7 +200,7 @@ h1 {
 }
 
 #results > .results-item:hover {
-    background-color: yellow;
+    background-color: var(--color3);
 }
     #results > .results-item > div {
         display: block;
@@ -201,11 +213,11 @@ h1 {
         height: auto;
     }
 
-#itemview-item{
+#itemview-item {
     margin: 20px;
     padding: 12px 16px;
     border-radius: 7px;
-    background-color: gold;
+    background-color: var(--color2);
 }
     #itemview-item > div {
         display: inline-block;
