@@ -1,5 +1,4 @@
 ﻿using System;
-using cs341.Structures;
 
 namespace cs341.Models
 {

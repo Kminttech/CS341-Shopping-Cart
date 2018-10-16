@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using cs341.Models;
-using cs341.Structures; // remove once database comes in
 
 namespace cs341.Controllers
 {
@@ -19,6 +18,7 @@ namespace cs341.Controllers
             Id = 0,
             Name = "Risk",
             Description = "Strategy game for parties",
+            ImageLOC = "risk.jpg",
             Price = (decimal)50.0,
             SalePrice = (decimal)30.0
         };
@@ -29,9 +29,9 @@ namespace cs341.Controllers
             Username = "admin",
             IsAdmin = true,
             IsGuest = false,
-            Cart = new Dictionary<Item, int>()
+            Cart = new List<CartEntry>
             {
-                {item, 1}
+                { new CartEntry { Id = 0, EntryItem = item, Quantitiy = 1 } }
             }
         };
 
@@ -64,7 +64,7 @@ namespace cs341.Controllers
 
         public ActionResult Home()
         {
-            return View("Index");
+            return PartialView("Home");
         }
 
         public ActionResult GetResults()
@@ -72,7 +72,7 @@ namespace cs341.Controllers
             return PartialView("ResultsView", results);
         }
 
-        public ActionResult GetResult()
+        public ActionResult GetItem(int id)
         {
             return PartialView("ItemView", itemView);
         }

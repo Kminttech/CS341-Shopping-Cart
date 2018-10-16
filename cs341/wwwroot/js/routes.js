@@ -1,9 +1,9 @@
 ﻿// routes
-function route(page){
+function route(page, id){
     $.ajax({
             type: "GET",
             url: page,
-            data: {"data":page},
+            data: {"data":id},
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (data) {
@@ -19,23 +19,7 @@ function route(page){
 }
 
 function routeHome() {
-    var page = "/Home/Home";
-    $.ajax({
-            type: "GET",
-            url: page,
-            data: {"data":page},
-            contentType: "application/json; charset=utf-8",
-            dataType: "html",
-            success: function (data) {
-                $("html").html(data);
-            },
-            failure: function (data) {
-                alert("Something went wrong");
-            },
-            error: function (data) {
-                alert("Something went wrong");
-            }
-        });
+    route("/Home/Home");
 }
 
 function routeToResults() {
@@ -48,4 +32,8 @@ function routeToCart(){
 
 function routeToRegister(){
     route("/Home/Register");
+}
+
+function routeToItem(id){
+    route("/Home/GetItem", id);
 }

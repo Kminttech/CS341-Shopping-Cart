@@ -6,6 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,7 +26,6 @@
     <Content Remove="wwwroot\images\Placeholder.png" />
     <Content Remove="Views\Home\About.cshtml" />
     <Content Remove="Views\Home\Contact.cshtml" />
-    <Content Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Remove="wwwroot\js\site.js" />
     <Content Remove="wwwroot\js\site.min.js" />
     <Content Remove="wwwroot\favicon.ico" />
@@ -50,21 +53,19 @@
     <Content Remove="Views\_ViewImports.cshtml" />
     <Content Remove="Index.cshtml" />
     <Content Remove="wwwroot\js\routes.js" />
-    <Content Remove="Models\Structures\Index.cshtml" />
     <Content Remove="wwwroot\js\EmptyJSFile.js" />
+    <Content Remove="wwwroot\images\items\risk.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="Views\Shared\" />
-    <Folder Include="Models\Structures\" />
+    <Folder Include="wwwroot\images\items\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\images\Placeholder.png" />
     <None Include="wwwroot\js\routes.js" />
     <None Include="wwwroot\js\main.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Models\Structures\Middleware.cs" />
+    <None Include="wwwroot\images\items\risk.jpg" />
   </ItemGroup>
 </Project>
