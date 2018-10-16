@@ -25,23 +25,34 @@
                 <i class="fa fa-lg fa-home"></i>
             </div>
             <div class="btn" onclick="routeToResults()">
-                Browse
+                Browse 
                 <i class="fa fa-lg fa-chess"></i>
             </div>
         </div>
         <div id="navbarUser" class="user">
-            <span id="username">Guest</span>
+            <span id="username">Guest</span> 
             <i class="fa fa-lg fa-user"></i>
             <div id="login-btn" class="btn" onclick="logIn()">
-                Log In
+                Log In 
                 <i class="fa fa-lg fa-sign-in-alt"></i>
+            </div>
+            <div id="login-content" class="hide">
+                <form>
+                    <fieldset id="inputs">
+                        <input id="username" type="text" name="Email" placeholder="Username" required>
+                        <input id="password" type="password" name="Password" placeholder="Password" required>
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="submit" id="submit" value="Log in">
+                    </fieldset>
+                </form>
             </div>
             <div id="register-btn" class="btn" onclick="routeToRegister()">
                 Register
                 <i class="fa fa-lg fa-user-plus"></i>
             </div>
             <div class="btn" onclick="routeToCart()">
-                Cart
+                Cart 
                 <i class="fa fa-lg fa-shopping-cart"></i>
             </div>
         </div>

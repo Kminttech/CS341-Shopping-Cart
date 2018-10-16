@@ -227,3 +227,15 @@ h1 {
         width: 200px;
         height: auto;
     }
+
+#login-content {
+    position: absolute;
+    top: 75px;
+    background-color: var(--color2);
+    padding: 15px;
+    border-radius: 3px 0 3px 3px;
+}
+
+.hide{
+    display: none;
+}
