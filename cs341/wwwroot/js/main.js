@@ -1,7 +1,7 @@
 ﻿// main
 
 function logIn() {
-  $("#login-content").removeClass("hide");        
+  $("#login-content").toggleClass("hide");        
 }
 
 function registerUser() {
