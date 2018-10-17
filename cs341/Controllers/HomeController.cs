@@ -55,6 +55,11 @@ namespace cs341.Controllers
             User = user
         };
 
+        public static AdminViewModel adminView = new AdminViewModel()
+        {
+            User = user
+        };
+
         ////////////////////////////////////////////
 
         public ActionResult Index()
@@ -65,6 +70,11 @@ namespace cs341.Controllers
         public ActionResult Home()
         {
             return PartialView("Home");
+        }
+
+        public ActionResult Admin()
+        {
+            return PartialView("AdminView", adminView);
         }
 
         public ActionResult GetResults()

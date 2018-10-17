@@ -1,0 +1,33 @@
+﻿@using cs341.Models
+@model cs341.Models.AdminViewModel
+<div id="admin-view" class="well">
+    <h1>Welcome @Model.User.Username</h1>
+    <h2>Users</h2>
+    <ul>
+        <li class="row"><div class="btn" onclick="dbRoute('/Users/Index')">Index <i class="fas fa-list"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Users/Create')">Create <i class="fas fa-plus-square"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Users/Edit')">Edit <i class="fas fa-edit"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Users/Delete')">Delete <i class="fas fa-trash"></i></div></li>
+    </ul>
+    <h2>Items</h2>
+    <ul>
+        <li class="row"><div class="btn" onclick="dbRoute('/Items/Index')">Index <i class="fas fa-list"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Items/Create')">Create <i class="fas fa-plus-square"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Items/Edit')">Edit <i class="fas fa-edit"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Items/Delete')">Delete <i class="fas fa-trash"></i></div></li>
+    </ul>
+    <h2>Categories</h2>
+    <ul>
+        <li class="row"><div class="btn" onclick="dbRoute('/Categories/Index')">Index <i class="fas fa-list"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Categories/Create')">Create <i class="fas fa-plus-square"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Categories/Edit')">Edit <i class="fas fa-edit"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Categories/Delete')">Delete <i class="fas fa-trash"></i></div></li>
+    </ul>
+    <h2>Promotions</h2>
+    <ul>
+        <li class="row"><div class="btn" onclick="dbRoute('/Promotions/Index')">Index <i class="fas fa-list"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Promotions/Create')">Create <i class="fas fa-plus-square"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Promotions/Edit')">Edit <i class="fas fa-edit"></i></div></li>
+        <li class="row"><div class="btn" onclick="dbRoute('/Promotions/Delete')">Delete <i class="fas fa-trash"></i></div></li>
+    </ul>
+</div>

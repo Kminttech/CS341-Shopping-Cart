@@ -37,3 +37,11 @@ function routeToRegister(){
 function routeToItem(id){
     route("/Home/GetItem", id);
 }
+
+function routeToAdmin(){
+    route("/Home/Admin");
+}
+
+function dbRoute(path){
+    route(path);
+}

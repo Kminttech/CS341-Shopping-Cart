@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -28,22 +30,26 @@
                 Browse 
                 <i class="fa fa-lg fa-chess"></i>
             </div>
+            <div class="btn" onclick="routeToAdmin()">
+                Admin
+                <i class="fa fa-lg fa-chess-king"></i>
+            </div>
         </div>
         <div id="navbarUser" class="user">
             <span id="username">Guest</span> 
             <i class="fa fa-lg fa-user"></i>
-            <div id="login-btn" class="btn" onclick="logIn()">
+            <div id="login-btn" class="btn" onclick="toggleLogIn()">
                 Log In 
                 <i class="fa fa-lg fa-sign-in-alt"></i>
             </div>
             <div id="login-content" class="hide">
                 <form>
                     <fieldset id="inputs">
-                        <input id="username" type="text" name="Email" placeholder="Username" required>
-                        <input id="password" type="password" name="Password" placeholder="Password" required>
+                        <input id="usernameInput" type="text" name="Email" placeholder="Username" required>
+                        <input id="passwordInput" type="password" name="Password" placeholder="Password" required>
                     </fieldset>
                     <fieldset id="actions">
-                        <input type="submit" id="submit" value="Log in">
+                        <input type="submit" id="submit" value="Log in" onclick="logIn()">
                     </fieldset>
                 </form>
             </div>

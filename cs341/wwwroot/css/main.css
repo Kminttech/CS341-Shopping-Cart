@@ -160,22 +160,14 @@ h1 {
     margin: 10px;
 }
 
-
-.btn {
-    display: inline-block;
-    text-align: center;
-    width: 100px;
-    height: 20px;
-    padding: 10px;
-    border: 2px solid var(--color5);
+.btn{
+    border: 1px solid black !important;
     border-radius: 5px;
 }
-
-
-    .btn:hover {
-        cursor: pointer;
-        background-color: var(--color3);
-    }
+.btn:hover {
+    cursor: pointer;
+    background-color: var(--color3);
+}
 
 #home{
     font-size: 2em;
