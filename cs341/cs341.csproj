@@ -62,7 +62,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
-    <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\images\items\" />
   </ItemGroup>
   <ItemGroup>
