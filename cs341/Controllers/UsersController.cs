@@ -53,7 +53,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Username,IsAdmin,IsGuest")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,IsAdmin,IsGuest")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
         {
             if (id != user.Id)
             {
