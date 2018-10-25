@@ -231,3 +231,9 @@ h1 {
 .hide{
     display: none;
 }
+
+#cart-notify{
+    position: fixed;
+    top: 7px; 
+    right: 7px;
+}
