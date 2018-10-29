@@ -26,13 +26,18 @@ namespace cs341.Controllers
         public static User user = new User()
         {
             Id = 0,
-            Username = "admin",
-            IsAdmin = true,
-            IsGuest = false,
+            Username = "Guest",
+            IsAdmin = false,
+            IsGuest = true,
             Cart = new List<CartEntry>
             {
                 { new CartEntry { Id = 0, EntryItem = item, Quantitiy = 1 } }
             }
+        };
+
+        public static IndexModel index = new IndexModel()
+        {
+            User = user
         };
 
         public static CartViewModel cart = new CartViewModel()
@@ -64,7 +69,7 @@ namespace cs341.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View("Index", index);
         }
 
         public ActionResult Home()
@@ -75,6 +80,24 @@ namespace cs341.Controllers
         public ActionResult Admin()
         {
             return PartialView("AdminView", adminView);
+        }
+
+        public ActionResult Login(string username, string password)
+        {
+            User user = new User()
+            {
+                Username = username,
+                Password = password,
+                IsAdmin = true,
+                IsGuest = false
+            };
+
+            IndexModel indexModel = new IndexModel()
+            {
+                User = user
+            };
+
+            return View("Index", indexModel);
         }
 
         public ActionResult GetResults()

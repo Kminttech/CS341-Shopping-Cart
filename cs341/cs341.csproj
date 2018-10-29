@@ -53,7 +53,6 @@
     <Content Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
     <Content Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
     <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\.bower.json" />
-    <Content Remove="Views\_ViewImports.cshtml" />
     <Content Remove="Index.cshtml" />
     <Content Remove="wwwroot\js\routes.js" />
     <Content Remove="wwwroot\js\EmptyJSFile.js" />

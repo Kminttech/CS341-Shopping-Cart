@@ -10,14 +10,14 @@ function registerUser() {
     $("#username").html(username);
 }
 
-function login(id){
-    var username = $("#usernameInput");
-    var password = $("#passwordInput");
+function logIn(id){
+    var username = $("#usernameInput").val();
+    var password = $("#passwordInput").val();
     $.get( 
       "/Home/Login",
       { username: username, password: password },
       function(data) {
-         // login stuff 
+         document.write(data);
       }
    );
 }

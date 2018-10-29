@@ -25,7 +25,8 @@ namespace cs341
         {
             services.AddMvc();
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=CS341CartDB;Trusted_Connection=True;ConnectRetryCount=0";
+            //var connection = @"Server=(localdb)\mssqllocaldb;Database=CS341CartDB;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=131.93.85.176,1433; Database = master; User Id = sa; Password = Password!;";
             services.AddDbContext<CartContext>
                 (options => options.UseSqlServer(connection));
         }
