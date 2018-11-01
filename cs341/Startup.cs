@@ -50,6 +50,8 @@ namespace cs341
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+
             });
         }
     }

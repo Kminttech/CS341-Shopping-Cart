@@ -4,12 +4,6 @@ function toggleLogIn() {
   $("#login-content").toggleClass("hide");        
 }
 
-function registerUser() {
-    var username = $("#username-input").val();
-    $("#register-user").html("<div>Thank You</div>");
-    $("#username").html(username);
-}
-
 function logIn(id){
     var username = $("#usernameInput").val();
     var password = $("#passwordInput").val();

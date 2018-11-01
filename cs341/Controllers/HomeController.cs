@@ -35,7 +35,7 @@ namespace cs341.Controllers
             }
         };
 
-        public static IndexModel index = new IndexModel()
+        public static IndexModel guest = new IndexModel()
         {
             User = user
         };
@@ -69,7 +69,7 @@ namespace cs341.Controllers
 
         public ActionResult Index()
         {
-            return View("Index", index);
+            return View("Index", guest);
         }
 
         public ActionResult Home()
@@ -98,6 +98,11 @@ namespace cs341.Controllers
             };
 
             return View("Index", indexModel);
+        }
+
+        public ActionResult RegisterLogin()
+        {
+            return View("RegisterLoginView", guest);
         }
 
         public ActionResult GetResults()

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using cs341.Models;
+using Microsoft.AspNetCore.Routing;
 
 namespace cs341.Controllers
 {
@@ -62,6 +63,21 @@ namespace cs341.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
+        }
+
+        // POST: Users/Register FOR GUEST USERS
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register([Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("RegisterLogin", new RouteValueDictionary(
+                            new { controller = "Home", action = "RegisterLogin"}));
+            } 
+            return Json("Failure");
         }
 
         // GET: Users/Edit/5
