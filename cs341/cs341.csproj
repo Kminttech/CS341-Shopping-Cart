@@ -68,5 +68,6 @@
     <None Include="wwwroot\js\routes.js" />
     <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\images\items\risk.jpg" />
+    <None Include="wwwroot\js\jquery.blockUI.js" />
   </ItemGroup>
 </Project>

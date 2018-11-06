@@ -6,7 +6,7 @@
 
 <div id="cart">
     <h1 class="heading">Cart</h1>
-    <div id="cart-container">
+    <div id="cart-container" class="well">
         @foreach (CartEntry entry in Model.User.Cart)
         {
             Item item = entry.EntryItem;

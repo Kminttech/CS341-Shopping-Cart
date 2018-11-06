@@ -81,28 +81,19 @@ namespace cs341.Controllers
         {
             return PartialView("AdminView", adminView);
         }
-
-        public ActionResult Login(string username, string password)
-        {
-            User user = new User()
-            {
-                Username = username,
-                Password = password,
-                IsAdmin = true,
-                IsGuest = false
-            };
-
-            IndexModel indexModel = new IndexModel()
-            {
-                User = user
-            };
-
-            return View("Index", indexModel);
-        }
-
+       
         public ActionResult RegisterLogin()
         {
             return View("RegisterLoginView", guest);
+        }
+
+        public ActionResult Login(User user)
+        {
+            IndexModel userIndex = new IndexModel()
+            {
+                User = user
+            };
+            return View("Index", userIndex);
         }
 
         public ActionResult GetResults()

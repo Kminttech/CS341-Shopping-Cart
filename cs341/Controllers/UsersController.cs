@@ -25,6 +25,18 @@ namespace cs341.Controllers
             return View(await _context.Users.ToListAsync());
         }
 
+        // GET: Users/Login
+        public async Task<IActionResult> Login(string username, string password)
+        {
+            User user =  await _context.Users
+                .SingleOrDefaultAsync(m => m.Username == username && m.Password == password);
+            if(user == null){
+                return Json("No such Username or Password Exists");
+            }
+
+            return RedirectToAction("Login", "Home", user);
+        }
+
         // GET: Users/Details/5
         public async Task<IActionResult> Details(int? id)
         {
