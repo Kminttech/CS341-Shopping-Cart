@@ -35,41 +35,52 @@
             </div>
             @if (Model.User.IsAdmin != null && Model.User.IsAdmin == true)
             {
-            <div class="btn" onclick="routeToAdmin()">
-                Admin
-                <i class="fa fa-lg fa-chess-king"></i>
-            </div>
+                <div class="btn" onclick="routeToAdmin()">
+                    Admin
+                    <i class="fa fa-lg fa-chess-king"></i>
+                </div>
             }
         </div>
         <div id="navbarUser" class="user">
             <span id="username">@Model.User.Username</span>
             <i class="fa fa-lg fa-user"></i>
-            <div id="login-btn" class="btn" onclick="toggleLogIn()">
-                Log In
-                <i class="fa fa-lg fa-sign-in-alt"></i>
-            </div>
+            @if (Model.User.IsGuest != null && Model.User.IsGuest == true)
+            {
+                <div id="login-btn" class="btn" onclick="toggleLogIn()">
+                    Log In
+                    <i class="fa fa-lg fa-sign-in-alt"></i>
+                </div>
+            } else
+            {
+                <div id="logout-btn" class="btn" onclick="logOut()">
+                    Log Out
+                    <i class="fa fa-lg fa-sign-out-alt"></i>
+                </div>
+
+            }
             <div id="login-content" class="hide">
                 <input id="usernameInput" type="text" name="Email" placeholder="Username" required>
                 <input id="passwordInput" type="password" name="Password" placeholder="Password" required>
                 <div class="btn" onclick="logIn()">Log in</div>
             </div>
-            <div id="register-btn" class="btn" onclick="routeToRegister()">
-                Register
-                <i class="fa fa-lg fa-user-plus"></i>
-            </div>
+            @if (Model.User.IsGuest != null && Model.User.IsGuest == true)
+            {
+                <div id="register-btn" class="btn" onclick="routeToRegister()">
+                    Register
+                    <i class="fa fa-lg fa-user-plus"></i>
+                </div>
+            }
             <div class="btn" onclick="routeToCart()">
                 Cart
                 <span class="fa-layers fa-fw">
                     <i class="fa fa-lg fa-shopping-cart"></i>
-                    <span id="cart-notify" class="fa-layers-counter hide" style="background:Tomato; font-size:3em">0</span>
+                    <span id="cart-notify" class="fa-layers-counter hide" style="background: Tomato; font-size: 3em">0</span>
                 </span>
             </div>
         </div>
     </div>
     <div id="main-content">
-        <h1>
-           Thank you! Please Log In
-        </h1>
+        <h1>Thank You! Please Log in :)</h1>
     </div>
     <div id="footer" class="footer">
         <span class="teamName">&copy; Code in the front, Coffee in the back</span>

@@ -18,6 +18,50 @@ function route(page, id){
         });
 }
 
+function logIn(){
+    block("Logging In");
+    var username = $("#usernameInput").val();
+    var password = $("#passwordInput").val();
+    $.ajax({
+            type: "GET",
+            url: "/Users/Login",
+            data: {"username":username, "password":password},
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (data) {
+                document.close();
+                document.write(data);
+            },
+            failure: function (data) {
+                alert("Something went wrong");
+            },
+            error: function (data) {
+                alert("Something went wrong");
+            }
+        });
+}
+
+function logOut(){
+    block("Logging Out");
+    $.ajax({
+            type: "GET",
+            url: "/Home/Index",
+            data: {},
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (data) {
+                document.close();
+                document.write(data);
+            },
+            failure: function (data) {
+                alert("Something went wrong");
+            },
+            error: function (data) {
+                alert("Something went wrong");
+            }
+        });
+}
+
 function routeHome() {
     route("/Home/Home");
 }

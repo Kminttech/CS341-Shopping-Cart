@@ -31,7 +31,7 @@ namespace cs341.Controllers
             User user =  await _context.Users
                 .SingleOrDefaultAsync(m => m.Username == username && m.Password == password);
             if(user == null){
-                return Json("No such Username or Password Exists");
+                return RedirectToAction("Error", "Home", new { error = "Username or Password does not match :(" });
             }
 
             return RedirectToAction("Login", "Home", user);

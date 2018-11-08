@@ -1,5 +1,5 @@
 ﻿@using cs341.Models
-@model cs341.Models.IndexModel
+@model cs341.Models.ErrorViewModel
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <link rel="stylesheet" href="~/css/main.css">
     <script src="~/js/routes.js"></script>
     <script src="~/js/main.js"></script>
@@ -35,10 +34,10 @@
             </div>
             @if (Model.User.IsAdmin != null && Model.User.IsAdmin == true)
             {
-                <div class="btn" onclick="routeToAdmin()">
-                    Admin
-                    <i class="fa fa-lg fa-chess-king"></i>
-                </div>
+            <div class="btn" onclick="routeToAdmin()">
+                Admin
+                <i class="fa fa-lg fa-chess-king"></i>
+            </div>
             }
         </div>
         <div id="navbarUser" class="user">
@@ -46,30 +45,26 @@
             <i class="fa fa-lg fa-user"></i>
             @if (Model.User.IsGuest != null && Model.User.IsGuest == true)
             {
-                <div id="login-btn" class="btn" onclick="toggleLogIn()">
-                    Log In
-                    <i class="fa fa-lg fa-sign-in-alt"></i>
-                </div>
+            <div id="login-btn" class="btn" onclick="toggleLogIn()">
+                Log In
+                <i class="fa fa-lg fa-sign-in-alt"></i>
+            </div>
             } else
             {
-                <div id="logout-btn" class="btn" onclick="logOut()">
-                    Log Out
-                    <i class="fa fa-lg fa-sign-out-alt"></i>
-                </div>
-
+            <div id="logout-btn" class="btn" onclick="logOut()">
+                Log Out
+                <i class="fa fa-lg fa-sign-out-alt"></i>
+            </div>
             }
             <div id="login-content" class="hide">
                 <input id="usernameInput" type="text" name="Email" placeholder="Username" required>
                 <input id="passwordInput" type="password" name="Password" placeholder="Password" required>
                 <div class="btn" onclick="logIn()">Log in</div>
             </div>
-            @if (Model.User.IsGuest != null && Model.User.IsGuest == true)
-            {
-                <div id="register-btn" class="btn" onclick="routeToRegister()">
-                    Register
-                    <i class="fa fa-lg fa-user-plus"></i>
-                </div>
-            }
+            <div id="register-btn" class="btn" onclick="routeToRegister()">
+                Register
+                <i class="fa fa-lg fa-user-plus"></i>
+            </div>
             <div class="btn" onclick="routeToCart()">
                 Cart
                 <span class="fa-layers fa-fw">
@@ -80,13 +75,7 @@
         </div>
     </div>
     <div id="main-content">
-        <div id="home-dice">
-            <i class="fa fa-spin fa-dice"></i>
-            <i class="fa fa-spin fa-gamepad"></i>
-            <i class="fa fa-spin fa-gavel"></i>
-            <i class="fa fa-spin fa-trophy"></i>
-            <i class="fa fa-spin fa-chess"></i>
-        </div>
+        <h1>@Model.Error</h1>
     </div>
     <div id="footer" class="footer">
         <span class="teamName">&copy; Code in the front, Coffee in the back</span>

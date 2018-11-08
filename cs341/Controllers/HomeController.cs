@@ -23,7 +23,7 @@ namespace cs341.Controllers
             SalePrice = (decimal)30.0
         };
 
-        public static User user = new User()
+        public static User guestUser = new User()
         {
             Id = 0,
             Username = "Guest",
@@ -37,18 +37,18 @@ namespace cs341.Controllers
 
         public static IndexModel guest = new IndexModel()
         {
-            User = user
+            User = guestUser
         };
 
         public static CartViewModel cart = new CartViewModel()
         {
-            User = user
+            User = guestUser
         };
 
         public static ItemViewModel itemView = new ItemViewModel()
         {
             Item = item,
-            User = user
+            User = guestUser
         };
 
         public static ResultsViewModel results = new ResultsViewModel()
@@ -57,12 +57,12 @@ namespace cs341.Controllers
             {
                 {item}
             },
-            User = user
+            User = guestUser
         };
 
         public static AdminViewModel adminView = new AdminViewModel()
         {
-            User = user
+            User = guestUser
         };
 
         ////////////////////////////////////////////
@@ -124,9 +124,9 @@ namespace cs341.Controllers
 
         }
 
-        public ActionResult Error()
+        public ActionResult Error(string error)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View("Error", new ErrorViewModel { Error = error, User = guestUser });
         }
     }
 }
