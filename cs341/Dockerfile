@@ -1,6 +1,6 @@
-FROM microsoft/aspnetcore-build:lts
-COPY . /app
-WORKDIR /app
+FROM microsoft/aspnetcore-build:2.0
+COPY . /CS341-Shopping-Cart
+WORKDIR /CS341-Shopping-Cart
 RUN ["dotnet", "restore", "cs341.sln"]
 RUN ["dotnet", "build", "cs341.sln"]
 EXPOSE 80/tcp
