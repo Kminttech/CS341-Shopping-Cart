@@ -7,7 +7,7 @@
     <h1>@Model.Item.Name</h1>
     <div id="itemview-item">
         <img class="itemview-item-image" src="images/items/@Model.Item.ImageLOC">
-        <div itemview-item-container>
+        <div class="itemview-item-container">
             <div class="itemview-item-price">
                 <h2>Price</h2>
                 <i class="fa fa-dollar-sign"></i>
@@ -21,9 +21,9 @@
                 <h2>Quantity</h2>
                 <input type="number" value="1">
             </div>
-            <div class="btn" onclick="updateCart()">
+            <div class="btn" onclick="addToCart()">
                 Add to Cart
-                <i class="fa fa-cart-plus"></i>
+                <i id="addToCartBtnIcon" class="fa fa-cart-plus"></i>
             </div>
         </div>
     </div>
