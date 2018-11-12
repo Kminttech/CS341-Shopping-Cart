@@ -1,9 +1,10 @@
 ﻿// routes
 function route(page, id){
+    fadeoutContent("#main-content");
     $.ajax({
             type: "GET",
             url: page,
-            data: {"data":id},
+            data: {"id":id},
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (data) {
@@ -31,6 +32,7 @@ function logIn(){
             success: function (data) {
                 document.close();
                 document.write(data);
+                newUser(false);
             },
             failure: function (data) {
                 alert("Something went wrong");
@@ -45,13 +47,14 @@ function logOut(){
     block("Logging Out");
     $.ajax({
             type: "GET",
-            url: "/Home/Index",
+            url: "/Home/Logout",
             data: {},
             contentType: "application/json; charset=utf-8",
             dataType: "html",
             success: function (data) {
                 document.close();
                 document.write(data);
+                user.isGuest == true;
             },
             failure: function (data) {
                 alert("Something went wrong");
@@ -67,7 +70,7 @@ function routeHome() {
 }
 
 function routeToResults() {
-    route("/Home/GetResults");
+    route("/Items/AllItems");
 }
 
 function routeToCart(){
@@ -79,7 +82,7 @@ function routeToRegister(){
 }
 
 function routeToItem(id){
-    route("/Home/GetItem", id);
+    route("/Items/ViewItem", id);
 }
 
 function routeToAdmin(){

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using cs341.Models;
 
@@ -10,66 +6,25 @@ namespace cs341.Controllers
 {
     public class HomeController : Controller
     {
-        ////////////////////////////////////////////
-        // used for testing purposes
-        ////////////////////////////////////////////
-        public static Item item = new Item()
-        {
-            Id = 0,
-            Name = "Risk",
-            Description = "Strategy game for parties",
-            ImageLOC = "risk.jpg",
-            Price = (decimal)50.0,
-            SalePrice = (decimal)30.0
-        };
 
-        public static User guestUser = new User()
+        ////////////////////////////////////////////
+        private static readonly User _user = new User()
         {
-            Id = 0,
+            Id = -1,
             Username = "Guest",
             IsAdmin = false,
             IsGuest = true,
-            Cart = new List<CartEntry>
-            {
-                { new CartEntry { Id = 0, EntryItem = item, Quantitiy = 1 } }
-            }
+            Cart = new List<CartEntry>()
         };
-
-        public static IndexModel guest = new IndexModel()
-        {
-            User = guestUser
-        };
-
-        public static CartViewModel cart = new CartViewModel()
-        {
-            User = guestUser
-        };
-
-        public static ItemViewModel itemView = new ItemViewModel()
-        {
-            Item = item,
-            User = guestUser
-        };
-
-        public static ResultsViewModel results = new ResultsViewModel()
-        {
-            Items = new List<Item>()
-            {
-                {item}
-            },
-            User = guestUser
-        };
-
-        public static AdminViewModel adminView = new AdminViewModel()
-        {
-            User = guestUser
-        };
-
         ////////////////////////////////////////////
 
         public ActionResult Index()
         {
-            return View("Index", guest);
+            IndexModel indexView = new IndexModel()
+            {
+                User = _user
+            };
+            return View("Index", indexView);
         }
 
         public ActionResult Home()
@@ -79,36 +34,48 @@ namespace cs341.Controllers
 
         public ActionResult Admin()
         {
+            AdminViewModel adminView = new AdminViewModel()
+            {
+                User = _user
+            };
             return PartialView("AdminView", adminView);
         }
        
         public ActionResult RegisterLogin()
         {
-            return View("RegisterLoginView", guest);
+            IndexModel index = new IndexModel()
+            {
+                User = _user
+            };
+            return View("RegisterLoginView", index);
         }
 
         public ActionResult Login(User user)
         {
-            IndexModel userIndex = new IndexModel()
+            IndexModel indexView = new IndexModel()
             {
                 User = user
             };
-            return View("Index", userIndex);
+            return View("Index", indexView);
         }
 
-        public ActionResult GetResults()
+        public ActionResult Logout()
         {
-            return PartialView("ResultsView", results);
+            IndexModel indexView = new IndexModel()
+            {
+                User = _user
+            };
+            return View("Index", indexView);
         }
 
-        public ActionResult GetItem(int id)
-        {
-            return PartialView("ItemView", itemView);
-        }
 
         public ActionResult GetCart()
         {
-            return PartialView("CartView", cart);
+            CartViewModel cartView = new CartViewModel()
+            {
+                User = _user
+            };
+            return PartialView("CartView", cartView);
         }
 
         public ActionResult Register()
@@ -116,17 +83,9 @@ namespace cs341.Controllers
             return PartialView("RegisterView");
         }
 
-        public ActionResult RegisterUser()
-        {
-            //Database Stuff
-            //return worked or not partial view :)
-            return null;
-
-        }
-
         public ActionResult Error(string error)
         {
-            return View("Error", new ErrorViewModel { Error = error, User = guestUser });
+            return View("Error", new ErrorViewModel { Error = error, User = _user });
         }
     }
 }

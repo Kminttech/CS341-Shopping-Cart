@@ -1,8 +1,8 @@
 FROM microsoft/aspnetcore-build:2.0
-COPY . /CS341-Shopping-Cart
-WORKDIR /CS341-Shopping-Cart
-RUN ["dotnet", "restore", "cs341.sln"]
-RUN ["dotnet", "build", "cs341.sln"]
+COPY . /cs341
+WORKDIR /cs341
+RUN ["dotnet", "restore"]
+RUN ["dotnet", "build"]
 EXPOSE 80/tcp
 RUN chmod +x ./entrypoint.sh
 CMD /bin/bash ./entrypoint.sh

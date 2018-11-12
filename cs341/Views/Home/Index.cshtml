@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Home</title>
+    <title>Coffee N Code</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.3.1//js/all.js"></script>
@@ -59,9 +59,13 @@
 
             }
             <div id="login-content" class="hide">
-                <input id="usernameInput" type="text" name="Email" placeholder="Username" required>
-                <input id="passwordInput" type="password" name="Password" placeholder="Password" required>
-                <div class="btn" onclick="logIn()">Log in</div>
+                <div class="well">
+                    <input id="usernameInput" type="text" name="Email" placeholder="Username" required>
+                    <input id="passwordInput" type="password" name="Password" placeholder="Password" required>
+                    <div class="btn pull-right" onclick="logIn()">Submit
+                        <i class="fa fa-lg fa-check"></i>
+                    </div>
+                </div>
             </div>
             @if (Model.User.IsGuest != null && Model.User.IsGuest == true)
             {

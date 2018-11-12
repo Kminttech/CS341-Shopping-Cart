@@ -19,22 +19,43 @@ namespace cs341.Controllers
             _context = context;
         }
 
-        // GET: Users
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Users.ToListAsync());
-        }
+//////////////////////////////////////////////////////////////
+/// Client Calls
+//////////////////////////////////////////////////////////////
 
-        // GET: Users/Login
+        /// Login
         public async Task<IActionResult> Login(string username, string password)
         {
             User user =  await _context.Users
                 .SingleOrDefaultAsync(m => m.Username == username && m.Password == password);
-            if(user == null){
-                return RedirectToAction("Error", "Home", new { error = "Username or Password does not match :(" });
-            }
+            return user == null
+                ? RedirectToAction("Error", "Home", new { error = "Username or Password does not match :(" })
+                : RedirectToAction("Login", "Home", user);
+        }
 
-            return RedirectToAction("Login", "Home", user);
+        /// Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register([Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("RegisterLogin", new RouteValueDictionary(
+                            new { controller = "Home", action = "RegisterLogin" }));
+            }
+            return Json("Failure");
+        }
+
+//////////////////////////////////////////////////////////////
+/// Admin Interaction
+//////////////////////////////////////////////////////////////
+
+        // GET: Users
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Users.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -75,21 +96,6 @@ namespace cs341.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
-        }
-
-        // POST: Users/Register FOR GUEST USERS
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("RegisterLogin", new RouteValueDictionary(
-                            new { controller = "Home", action = "RegisterLogin"}));
-            } 
-            return Json("Failure");
         }
 
         // GET: Users/Edit/5

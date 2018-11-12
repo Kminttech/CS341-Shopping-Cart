@@ -18,6 +18,41 @@ namespace cs341.Controllers
             _context = context;
         }
 
+//////////////////////////////////////////////////////////////
+/// Client Calls
+//////////////////////////////////////////////////////////////
+
+        public IActionResult AllItems()
+        {
+            List<Item> listItems = _context.Items.ToList();
+            if (listItems == null)
+                return RedirectToAction("Error", "Home", new { error = "Having trouble finding games :(" });
+
+            ResultsViewModel resultsView = new ResultsViewModel()
+            {
+                Items = listItems
+            };
+            return PartialView("ResultsView", resultsView);
+        }
+
+        public IActionResult ViewItem(int? id)
+        {
+            Item item = _context.Items.SingleOrDefault(m => m.Id == id);
+            if (item == null)
+                return RedirectToAction("Error", "Home", new { error = "Having trouble finding that game :(" });
+
+            ItemViewModel itemView = new ItemViewModel()
+            {
+                Item = item
+            };
+            return PartialView("ItemView", itemView);
+        }
+
+
+        //////////////////////////////////////////////////////////////
+        /// Admin Interaction
+        //////////////////////////////////////////////////////////////
+
         // GET: Items
         public async Task<IActionResult> Index()
         {
@@ -53,7 +88,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,SalePrice")] Item item)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,SalePrice,ImageLOC")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +120,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,SalePrice")] Item item)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,SalePrice,ImageLOC")] Item item)
         {
             if (id != item.Id)
             {

@@ -1,7 +1,16 @@
 ﻿// main
+var user = {
+ isGuest: true,
+ cart: {}
+};
+
+async function newUser(isGuest){
+    user.isGuest = isGuest;
+    user.cart = {};
+}
 
 function block(message){
-    $.blockUI({ message: message });
+    $.blockUI({ message: message + "  <i class='fa fa-spin fa-dice'></i>" });
 }
 
 function unblock(){
@@ -31,4 +40,11 @@ function updateCart() {
 
     var num = Number(cartNotify.text()) + 1;
     $("#cart-notify").text(num)
+}
+
+function fadeoutContent(elem){
+    var fadable = $(elem);
+    if(fadable.length){
+        fadable.children().fadeOut();
+    }
 }
