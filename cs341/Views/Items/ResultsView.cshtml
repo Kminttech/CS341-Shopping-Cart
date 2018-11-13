@@ -21,7 +21,14 @@
                 <div class="results-item-name">@item.Name</div>
                 <div class="results-item-price">
                     <i class="fa fa-dollar-sign"></i>
-                    @item.Price
+                    @if (item.SalePrice != null)
+                    {
+                        <p><s>@item.Price</s> @item.SalePrice</p>
+                    }
+                    else
+                    {
+                        <p>@item.Price</p>
+                    }
                 </div>
             </div>
         }
