@@ -13,11 +13,14 @@
                 <i class="fa fa-dollar-sign"></i>
                 @if(Model.Item.SalePrice != null)
                 {
-                    <p><s>@Model.Item.Price</s> @Model.Item.SalePrice</p>
+                <span>
+                    <s>@Model.Item.Price</s>
+                    <i class="fa fa-dollar-sign"></i> @Model.Item.SalePrice
+                </span>
                 }
                 else
                 {
-                    <p>@Model.Item.Price</p>
+                    <span>@Model.Item.Price</span>
                 }
             </div>
             <div class="itemview-item-description">
