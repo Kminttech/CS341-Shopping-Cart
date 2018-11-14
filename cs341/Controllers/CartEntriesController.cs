@@ -27,8 +27,30 @@ namespace cs341.Controllers
             if(cartEntry != null)
             {
                 _context.Add(cartEntry);
-                _context.SaveChangesAsync();
+                _context.SaveChanges();
             }
+        }
+
+        public ActionResult GetCart(int id)
+        {
+            List<CartEntry> entriesWithDup = _context.CartEntries.Where(entry => entry.UserId == id).ToList();
+            List<CartEntry> entries = new List<CartEntry>();
+            // remove duplicates
+            foreach (CartEntry entry in entriesWithDup)
+            {
+                if (!entries.Any(e => e.EntryItemId == entry.EntryItemId))
+                    entries.Add(entry);
+            }
+
+            List <Item> items = new List<Item>();
+            entries.ForEach(entry => items.Add(_context.Items.SingleOrDefault(item => item.Id == entry.EntryItemId)));
+            CartViewModel cartView = new CartViewModel()
+            {
+                Entries = entries,
+                Items = items
+            };
+
+            return View("CartView", cartView);
         }
 
 

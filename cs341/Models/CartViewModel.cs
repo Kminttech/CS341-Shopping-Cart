@@ -5,6 +5,7 @@ namespace cs341.Models
 {
     public class CartViewModel
     {
-        public User User { get; set; }
+        public List<Item> Items { get; set; }
+        public List<CartEntry> Entries { get; set; }
     }
 }

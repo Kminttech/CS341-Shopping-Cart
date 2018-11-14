@@ -68,16 +68,6 @@ namespace cs341.Controllers
             return View("Index", indexView);
         }
 
-
-        public ActionResult GetCart()
-        {
-            CartViewModel cartView = new CartViewModel()
-            {
-                User = _user
-            };
-            return PartialView("CartView", cartView);
-        }
-
         public ActionResult Register()
         {
             return PartialView("RegisterView");

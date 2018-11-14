@@ -19,6 +19,28 @@ function route(page, id){
         });
 }
 
+function register(){
+    block("Getting you set up");
+        var username = $("#registerUsername").val();
+        var password = $("#registerPassword").val();
+        $.ajax({
+                type: "GET",
+                url: "/Users/Register",
+                data: {Username:username, Password:password, IsAdmin:"false", IsGuest:"false"},
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (data) {
+                    $("#main-content").html(data);
+                },
+                failure: function (data) {
+                    alert("Something went wrong");
+                },
+                error: function (data) {
+                    alert("Something went wrong");
+                }
+            }).always(unblock);
+}
+
 function logIn(){
     block("Logging In");
     var username = $("#usernameInput").val();
@@ -32,7 +54,6 @@ function logIn(){
             success: function (data) {
                 document.close();
                 document.write(data);
-                newUser(false);
             },
             failure: function (data) {
                 alert("Something went wrong");
@@ -91,7 +112,7 @@ function routeToResults() {
 }
 
 function routeToCart(){
-    route("/Home/GetCart");
+    route("/CartEntries/GetCart", $("#user-id").val());
 }
 
 function routeToRegister(){

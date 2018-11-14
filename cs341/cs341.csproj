@@ -54,6 +54,7 @@
     <Content Remove="wwwroot\js\routes.js" />
     <Content Remove="wwwroot\js\EmptyJSFile.js" />
     <Content Remove="wwwroot\images\items\risk.jpg" />
+    <Content Remove="wwwroot\images\items\catan.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
@@ -67,5 +68,6 @@
     <None Include="wwwroot\images\items\risk.jpg" />
     <None Include="wwwroot\js\jquery.blockUI.js" />
     <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\images\items\catan.jpg" />
   </ItemGroup>
 </Project>

@@ -1,14 +1,4 @@
 ﻿// main
-var user = {
- isGuest: true,
- cart: {}
-};
-
-async function newUser(isGuest){
-    user.isGuest = isGuest;
-    user.cart = {};
-}
-
 function block(message){
     $.blockUI({ message: message + "  <i class='fa fa-spin fa-dice'></i>" });
 }
@@ -39,7 +29,7 @@ function addToCart(itemId) {
     if(userId == -1){
         updateCart();
     } else{
-        addCartEntry(itemId, userId, quantity);
+        addCartEntry(userId, itemId, quantity);
     }
 }
 
@@ -53,4 +43,8 @@ function updateCart() {
 
     var num = Number(cartNotify.text()) + 1;
     $("#cart-notify").text(num);
+}
+
+function removeItemFromCart(){
+    alert("not implemented yet");
 }

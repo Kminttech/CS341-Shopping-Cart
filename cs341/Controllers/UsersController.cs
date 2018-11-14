@@ -34,18 +34,11 @@ namespace cs341.Controllers
         }
 
         /// Register
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register([Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
+        public IActionResult Register([Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("RegisterLogin", new RouteValueDictionary(
-                            new { controller = "Home", action = "RegisterLogin" }));
-            }
-            return Json("Failure");
+            _context.Add(user);
+            _context.SaveChanges();
+            return View("RegisterLoginView");
         }
 
 //////////////////////////////////////////////////////////////

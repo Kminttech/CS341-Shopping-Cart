@@ -1,0 +1,33 @@
+﻿@*
+    Cart
+*@
+@using cs341.Models
+@model cs341.Models.CartViewModel
+
+<div id="cart">
+    <h1 class="heading">Cart</h1>
+    @if (!Model.Items.Any())
+    {
+        <h2> No Items in Cart Get Shopping! :D </h2>
+    }
+    <ul id="cart-container" class="list-group">
+        @foreach (Item item in Model.Items)
+        {
+            int quantity = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Quantity;
+            int entryId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Id;
+            <li class="cart-item-description well">
+                <img class="itemview-item-image img-thumbnail" src="images/items/@item.ImageLOC">
+                <div id="cart-item-info">
+                    <div class=cart-item-name>@item.Name</div>
+                    <input class="cart-item-quantity" type="text" value="@quantity">
+                    <div class=cart-item-price>@item.Price</div>
+                    <div class=cart-item-description>@item.Description</div>
+                </div>
+                <div id="itemview-item-buttons">
+                    <div class="btn-sm btn-danger" onclick="removeItemFromCart(@entryId)"><i class="fa fa-trash"></i> Delete</div>
+                    <div class="btn-sm btn-default" onclick="routeToItem(@item.Id)"><i class="fa fa-info"></i> Details</div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
