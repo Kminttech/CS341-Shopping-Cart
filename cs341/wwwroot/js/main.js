@@ -21,30 +21,36 @@ function toggleLogIn() {
   $("#login-content").toggleClass("hide");        
 }
 
-function addToCart() {
+function fadeoutContent(elem){
+    var fadable = $(elem);
+    if(fadable.length){
+        fadable.children().fadeOut();
+    }
+}
+
+function addToCart(itemId) {
     var addToCartBtn = $("#addToCartBtnIcon");
+    var quantity = $(".itemview-item-quantity>input").val();
+    var userId = $("#user-id").val();
     if (addToCartBtn.length) {
         addToCartBtn.removeClass("fa-cart-plus");
         addToCartBtn.addClass("fa-check");
     }
-    updateCart();
+    if(userId == -1){
+        updateCart();
+    } else{
+        addCartEntry(itemId, userId, quantity);
+    }
 }
 
 function updateCart() {
     var cartNotify = $("#cart-notify");
-    var quantity = $("#itemview-item-quantity>input").value;
+    var quantity = $(".itemview-item-quantity>input").val();
 
     if(cartNotify.hasClass("hide")){
         cartNotify.removeClass("hide");
     }
 
     var num = Number(cartNotify.text()) + 1;
-    $("#cart-notify").text(num)
-}
-
-function fadeoutContent(elem){
-    var fadable = $(elem);
-    if(fadable.length){
-        fadable.children().fadeOut();
-    }
+    $("#cart-notify").text(num);
 }

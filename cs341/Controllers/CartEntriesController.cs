@@ -22,6 +22,14 @@ namespace cs341.Controllers
 /// Client Calls
 //////////////////////////////////////////////////////////////
 
+        public void AddEntry([Bind("Id,EntryItemId,UserId,Quantity")] CartEntry cartEntry)
+        {
+            if(cartEntry != null)
+            {
+                _context.Add(cartEntry);
+                _context.SaveChangesAsync();
+            }
+        }
 
 
 //////////////////////////////////////////////////////////////
@@ -63,7 +71,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,quantitiy")] CartEntry cartEntry)
+        public async Task<IActionResult> Create([Bind("Id,EntryItemId,UserId,Quantity")] CartEntry cartEntry)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +103,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,quantitiy")] CartEntry cartEntry)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,EntryItemId,UserId,Quantity")] CartEntry cartEntry)
         {
             if (id != cartEntry.Id)
             {

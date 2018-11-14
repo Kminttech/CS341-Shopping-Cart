@@ -9,8 +9,8 @@
     <div id="cart-container" class="well">
         @foreach (CartEntry entry in Model.User.Cart)
         {
-            Item item = entry.EntryItem;
-            int quantity = entry.Quantitiy;
+            Item item = entry.EntryItemId;
+            int quantity = entry.Quantity;
             <div class="cart-item">
                 <div class=cart-item-name>@item.Name</div>
                 <input class="cart-item-quantity" type="text" value="@quantity">

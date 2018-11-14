@@ -43,6 +43,7 @@
         </div>
         <div id="navbarUser" class="user">
             <span id="username">@Model.User.Username</span>
+            <input id="user-id" type="text" value="@Model.User.Id"/>
             <i class="fa fa-lg fa-user"></i>
             @if (Model.User.IsGuest != null && Model.User.IsGuest == true)
             {

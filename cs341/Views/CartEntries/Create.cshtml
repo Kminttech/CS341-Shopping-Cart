@@ -13,9 +13,19 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <h4>EntryItemId</h4>
+                <input asp-for="EntryItemId" class="form-control" />
+                <span asp-validation-for="EntryItemId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h4>UserId</h4>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <h4>Quantity</h4>
-                <input asp-for="Quantitiy" class="form-control" />
-                <span asp-validation-for="Quantitiy" class="text-danger"></span>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

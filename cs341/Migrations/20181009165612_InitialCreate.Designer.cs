@@ -30,7 +30,7 @@ namespace cs341.Migrations
 
                     b.Property<int?>("UserId");
 
-                    b.Property<int>("quantitiy");
+                    b.Property<int>("Quantity");
 
                     b.HasKey("Id");
 

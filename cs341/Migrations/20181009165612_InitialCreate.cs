@@ -91,7 +91,7 @@ namespace cs341.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     EntryItemId = table.Column<int>(nullable: true),
                     UserId = table.Column<int>(nullable: true),
-                    quantitiy = table.Column<int>(nullable: false)
+                    Quantity = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

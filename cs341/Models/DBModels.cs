@@ -39,8 +39,9 @@ namespace cs341.Models
     public class CartEntry
     {
         public int Id { get; set; }
-        public Item EntryItem { get; set; }
-        public int Quantitiy { get; set; }
+        public int UserId { get; set; }
+        public int EntryItemId { get; set; }
+        public int Quantity { get; set; }
     }
 
     public class User

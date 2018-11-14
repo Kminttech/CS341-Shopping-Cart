@@ -40,7 +40,7 @@ function logIn(){
             error: function (data) {
                 alert("Something went wrong");
             }
-        });
+        }).always(unblock);
 }
 
 function logOut(){
@@ -61,6 +61,23 @@ function logOut(){
             },
             error: function (data) {
                 alert("Something went wrong");
+            }
+        }).always(unblock);
+}
+
+function addCartEntry(userId, itemId, quantity) {
+    $.ajax({
+            type: "POST",
+            url: "/CartEntries/AddEntry",
+            data: {EntryItemId: itemId, UserId: userId, Quantity: quantity},
+            success: function (data) {
+                updateCart();
+            },
+            failure: function (data) {
+                //alert("Something went wrong :(");
+            },
+            error: function (data) {
+                //alert("Something went wrong :(");
             }
         });
 }
