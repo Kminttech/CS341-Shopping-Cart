@@ -112,7 +112,24 @@ function routeToResults() {
 }
 
 function routeToCart(){
-    route("/CartEntries/GetCart", $("#user-id").val());
+    var userId = $("#user-id").val();
+    fadeoutContent("#main-content");
+        $.ajax({
+                type: "GET",
+                url: "/CartEntries/GetCart",
+                data: {id:userId, discount:""},
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (data) {
+                    $("#main-content").html(data);
+                },
+                failure: function (data) {
+                    alert("Something went wrong");
+                },
+                error: function (data) {
+                    alert("Something went wrong");
+                }
+            });
 }
 
 function routeToRegister(){

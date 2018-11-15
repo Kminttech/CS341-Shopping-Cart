@@ -24,12 +24,10 @@ namespace cs341.Controllers
 
         public ActionResult AddPromotionToCart(string promoCode, int userId)
         {
-            //Promotion promo = _context.Promotions.SingleOrDefault(m => m.Code == promoCode);
-            //if(promo != null)
-            //{
-            //    return ;
-            //}
-            return RedirectToAction("GetCart", "CartEntries", new { id = userId });
+            Promotion promo = _context.Promotions.SingleOrDefault(m => m.Code == promoCode);
+            return promo == null
+                ? (ActionResult)Json("<h1>Promo Code doesn't exist!</h1>")
+                : RedirectToAction("GetCart", "CartEntries", new { id = userId, discount = promo.PercentOff });
         }
 
 //////////////////////////////////////////////////////////////

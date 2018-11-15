@@ -36,7 +36,7 @@ namespace cs341.Controllers
             var cartEntry = _context.CartEntries.SingleOrDefault(m => m.Id == cartId);
             _context.CartEntries.Remove(cartEntry);
             _context.SaveChanges();
-            return GetCart(userId);
+            return GetCart(userId, null);
         }
 
         public ActionResult EditEntry(int cartId, int quantity, int userId)
@@ -45,10 +45,10 @@ namespace cs341.Controllers
             cartEntry.Quantity = quantity;
             _context.CartEntries.Update(cartEntry);
             _context.SaveChanges();
-            return GetCart(userId);
+            return GetCart(userId, null);
         }
 
-        public ActionResult GetCart(int id)
+        public ActionResult GetCart(int id, decimal? discount)
         {
             List<CartEntry> entriesWithDup = _context.CartEntries.Where(entry => entry.UserId == id).ToList();
             List<CartEntry> entries = new List<CartEntry>();
@@ -64,8 +64,10 @@ namespace cs341.Controllers
             CartViewModel cartView = new CartViewModel()
             {
                 Entries = entries,
-                Items = items
+                Items = items,
             };
+            if (discount != null)
+                cartView.Discount = (decimal)discount;
 
             return View("CartView", cartView);
         }

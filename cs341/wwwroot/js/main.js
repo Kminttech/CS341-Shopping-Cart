@@ -64,6 +64,7 @@ function removeItemFromCart(cartId, userId) {
 
 function updateQuantityInCart(cartId, elem, userId) {
     var quantity = $(elem).val();
+    block("updating cart");
     $.ajax({
         type: "POST",
         url: "/CartEntries/EditEntry",
@@ -77,16 +78,17 @@ function updateQuantityInCart(cartId, elem, userId) {
         error: function (data) {
             //alert("Something went wrong :(");
         }
-    });
+    }).always(unblock());
 }
 
 function checkOut() {
-    alert("not implemented yet");
+    alert("CHECKED OUT!");
 }
 
 function addPromotion() {
 var promoCode = $("#promotionInput").val();
 var userId = $("#user-id").val();
+block("Applying Promotion!");
 $.ajax({
         type: "POST",
         url: "/Promotions/AddPromotionToCart",
@@ -100,7 +102,7 @@ $.ajax({
         error: function (data) {
             //alert("Something went wrong :(");
         }
-    });
+    }).always(unblock());
 }
 
 function cartQuantityChange() {

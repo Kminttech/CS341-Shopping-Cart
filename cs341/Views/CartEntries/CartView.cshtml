@@ -2,8 +2,13 @@
     Cart
 *@
 @using cs341.Models
+@using System.Globalization;
 @model cs341.Models.CartViewModel
-@{decimal totalCost = 0; }
+@{
+    decimal totalCost = 0;
+ decimal? discount = Model.Discount;
+ string discountCost = "";
+}
 
 <div id="cart">
     <h1 class="heading">Cart</h1>
@@ -17,6 +22,7 @@
             int quantity = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Quantity;
             int entryId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Id;
             int userId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).UserId;
+
             <li class="cart-item-description well">
                 <img class="itemview-item-image img-thumbnail" src="~/images/items/@item.ImageLOC">
                 <div id="cart-item-info">
@@ -41,12 +47,22 @@
             </li>
         }
     </ul>
-    @if(Model.Items.Any())
+    @if (Model.Items.Any())
     {
         <div>
             <input id="promotionInput" type="text" /><span class="btn" onclick="addPromotion()">Add Promotion</span>
         </div>
-        <p>Total Cost: <i class="fa fa-dollar-sign"></i> @totalCost</p>
+        @if (discount == 0)
+        {
+            <p>Total Cost: <i class="fa fa-dollar-sign"></i> @totalCost</p>
+        }
+        else
+        {
+            NumberFormatInfo setPercision = new NumberFormatInfo();
+            setPercision.NumberDecimalDigits = 2;
+            discountCost = ((decimal)(totalCost * (1 - discount))).ToString("N", setPercision);
+            <p>Total Cost: <i class="fa fa-dollar-sign"></i> <s>@totalCost</s> @discountCost</p>
+        }
         <div class="btn" onclick="checkOut()">
             Check Out
         </div>
