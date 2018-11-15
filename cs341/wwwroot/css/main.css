@@ -237,3 +237,7 @@ h1 {
     top: 7px; 
     right: 7px;
 }
+
+#main-content{
+    padding-bottom: 50px;
+}

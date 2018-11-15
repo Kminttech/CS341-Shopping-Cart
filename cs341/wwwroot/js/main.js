@@ -48,3 +48,7 @@ function updateCart() {
 function removeItemFromCart(){
     alert("not implemented yet");
 }
+
+function checkOut() {
+    alert("not implemented yet");
+}

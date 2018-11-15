@@ -3,6 +3,7 @@
 *@
 @using cs341.Models
 @model cs341.Models.CartViewModel
+@{decimal totalCost = 0; }
 
 <div id="cart">
     <h1 class="heading">Cart</h1>
@@ -20,7 +21,16 @@
                 <div id="cart-item-info">
                     <div class=cart-item-name>@item.Name</div>
                     <input class="cart-item-quantity" type="text" value="@quantity">
-                    <div class=cart-item-price>@item.Price</div>
+                    @if (item.SalePrice != null)
+                    {
+                        <div class=cart-item-price>@item.SalePrice</div>
+                        totalCost += (decimal)item.SalePrice * quantity;
+                    }
+                    else
+                    {
+                        <div class=cart-item-price>@item.Price</div>
+                        totalCost += item.Price * quantity;
+                    }
                     <div class=cart-item-description>@item.Description</div>
                 </div>
                 <div id="itemview-item-buttons">
@@ -30,4 +40,8 @@
             </li>
         }
     </ul>
+    <p>Total Cost: <i class="fa fa-dollar-sign"></i> @totalCost</p>
+    <div class="btn" onclick="checkOut()">
+        Check Out
+    </div>
 </div>
