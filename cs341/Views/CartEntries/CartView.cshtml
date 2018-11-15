@@ -21,7 +21,7 @@
                 <img class="itemview-item-image img-thumbnail" src="~/images/items/@item.ImageLOC">
                 <div id="cart-item-info">
                     <div class=cart-item-name>@item.Name</div>
-                    <input class="cart-item-quantity" type="text" value="@quantity">
+                    <input class="cart-item-quantity" type="text" value="@quantity" onchange="updateQuantityInCart(@entryId,this,@userId)">
                     @if (item.SalePrice != null)
                     {
                         <div class=cart-item-price>@item.SalePrice</div>

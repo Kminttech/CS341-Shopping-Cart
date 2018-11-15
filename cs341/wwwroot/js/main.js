@@ -62,7 +62,8 @@ function removeItemFromCart(cartId, userId) {
     });
 }
 
-function updateQuantityInCart(cartId, quantity, userId) {
+function updateQuantityInCart(cartId, elem, userId) {
+    var quantity = $(elem).val();
     $.ajax({
         type: "POST",
         url: "/CartEntries/EditEntry",
