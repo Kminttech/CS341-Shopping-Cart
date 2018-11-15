@@ -62,6 +62,23 @@ function removeItemFromCart(cartId, userId) {
     });
 }
 
+function updateQuantityInCart(cartId, quantity, userId) {
+    $.ajax({
+        type: "POST",
+        url: "/CartEntries/EditEntry",
+        data: { cartId: cartId, quantity: quantity, userId: userId },
+        success: function (data) {
+            $("#main-content").html(data);
+        },
+        failure: function (data) {
+            //alert("Something went wrong :(");
+        },
+        error: function (data) {
+            //alert("Something went wrong :(");
+        }
+    });
+}
+
 function checkOut() {
     alert("not implemented yet");
 }

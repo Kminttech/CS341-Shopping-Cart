@@ -39,6 +39,15 @@ namespace cs341.Controllers
             return GetCart(userId);
         }
 
+        public ActionResult EditEntry(int cartId, int quantity, int userId)
+        {
+            var cartEntry = _context.CartEntries.SingleOrDefault(m => m.Id == cartId);
+            cartEntry.Quantity = quantity;
+            _context.CartEntries.Update(cartEntry);
+            _context.SaveChanges();
+            return GetCart(userId);
+        }
+
         public ActionResult GetCart(int id)
         {
             List<CartEntry> entriesWithDup = _context.CartEntries.Where(entry => entry.UserId == id).ToList();
