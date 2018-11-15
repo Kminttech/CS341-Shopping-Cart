@@ -45,8 +45,21 @@ function updateCart() {
     $("#cart-notify").text(num);
 }
 
-function removeItemFromCart(){
-    alert("not implemented yet");
+function removeItemFromCart(cartId, userId) {
+    $.ajax({
+        type: "POST",
+        url: "/CartEntries/DeleteEntry",
+        data: { cartId: cartId, userId: userId },
+        success: function (data) {
+            $("#main-content").html(data);
+        },
+        failure: function (data) {
+            //alert("Something went wrong :(");
+        },
+        error: function (data) {
+            //alert("Something went wrong :(");
+        }
+    });
 }
 
 function checkOut() {

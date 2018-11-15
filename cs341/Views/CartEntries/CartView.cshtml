@@ -16,6 +16,7 @@
         {
             int quantity = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Quantity;
             int entryId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Id;
+            int userId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).UserId;
             <li class="cart-item-description well">
                 <img class="itemview-item-image img-thumbnail" src="images/items/@item.ImageLOC">
                 <div id="cart-item-info">
@@ -34,7 +35,7 @@
                     <div class=cart-item-description>@item.Description</div>
                 </div>
                 <div id="itemview-item-buttons">
-                    <div class="btn-sm btn-danger" onclick="removeItemFromCart(@entryId)"><i class="fa fa-trash"></i> Delete</div>
+                    <div class="btn-sm btn-danger" onclick="removeItemFromCart(@entryId,@userId)"><i class="fa fa-trash"></i> Delete</div>
                     <div class="btn-sm btn-default" onclick="routeToItem(@item.Id)"><i class="fa fa-info"></i> Details</div>
                 </div>
             </li>
