@@ -63,7 +63,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Code,PercentOff")] Promotion promotion)
+        public async Task<IActionResult> Create([Bind("Id,Name,Code,PercentOff,StartDate,EndDate")] Promotion promotion)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Code,PercentOff")] Promotion promotion)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Code,PercentOff,StartDate,EndDate")] Promotion promotion)
         {
             if (id != promotion.Id)
             {

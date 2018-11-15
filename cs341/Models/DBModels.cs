@@ -60,6 +60,7 @@ namespace cs341.Models
         public string Name { get; set; }
         public string Code { get; set; }
         public decimal PercentOff { get; set; }
-        public List<Item> SaleItems { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 }
