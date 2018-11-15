@@ -20,11 +20,12 @@ namespace cs341.Controllers
 
         public ActionResult Index()
         {
-            IndexModel indexView = new IndexModel()
-            {
-                User = _user
-            };
-            return View("Index", indexView);
+            return RedirectToAction("GuestIndex", "Users");
+            //IndexModel indexView = new IndexModel()
+            //{
+            //    User = _user
+            //};
+            //return View("Index", indexView);
         }
 
         public ActionResult Home()
@@ -61,11 +62,12 @@ namespace cs341.Controllers
 
         public ActionResult Logout()
         {
-            IndexModel indexView = new IndexModel()
-            {
-                User = _user
-            };
-            return View("Index", indexView);
+            return RedirectToAction("GuestIndex", "Users");
+            //IndexModel indexView = new IndexModel()
+            //{
+            //    User = _user
+            //};
+            //return View("Index", indexView);
         }
 
         public ActionResult Register()

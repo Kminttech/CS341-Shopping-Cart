@@ -41,6 +41,20 @@ namespace cs341.Controllers
             return View("RegisterLoginView");
         }
 
+        public IActionResult GuestIndex()
+        {
+            User guest = new User()
+            {
+                Username = "Guest",
+                IsGuest = true,
+                IsAdmin = false
+            };
+            _context.Add(guest);
+            _context.SaveChanges();
+
+            return RedirectToAction("Login", "Home", guest);
+        }
+
 //////////////////////////////////////////////////////////////
 /// Admin Interaction
 //////////////////////////////////////////////////////////////
