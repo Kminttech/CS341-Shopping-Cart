@@ -22,11 +22,19 @@ namespace cs341.Controllers
 /// Client Calls
 //////////////////////////////////////////////////////////////
 
-
+        public ActionResult AddPromotionToCart(string promoCode, int userId)
+        {
+            //Promotion promo = _context.Promotions.SingleOrDefault(m => m.Code == promoCode);
+            //if(promo != null)
+            //{
+            //    return ;
+            //}
+            return RedirectToAction("GetCart", "CartEntries", new { id = userId });
+        }
 
 //////////////////////////////////////////////////////////////
 /// Admin Interaction
-//////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
 
         // GET: Promotions
         public async Task<IActionResult> Index()

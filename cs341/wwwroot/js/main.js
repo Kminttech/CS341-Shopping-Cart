@@ -65,3 +65,26 @@ function removeItemFromCart(cartId, userId) {
 function checkOut() {
     alert("not implemented yet");
 }
+
+function addPromotion() {
+var promoCode = $("#promotionInput").val();
+var userId = $("#user-id").val();
+$.ajax({
+        type: "POST",
+        url: "/Promotions/AddPromotionToCart",
+        data: { promoCode: promoCode, userId: userId },
+        success: function (data) {
+            $("#main-content").html(data);
+        },
+        failure: function (data) {
+            //alert("Something went wrong :(");
+        },
+        error: function (data) {
+            //alert("Something went wrong :(");
+        }
+    });
+}
+
+function cartQuantityChange() {
+    alert("not implemented yet");
+}

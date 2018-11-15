@@ -18,7 +18,7 @@
             int entryId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Id;
             int userId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).UserId;
             <li class="cart-item-description well">
-                <img class="itemview-item-image img-thumbnail" src="images/items/@item.ImageLOC">
+                <img class="itemview-item-image img-thumbnail" src="~/images/items/@item.ImageLOC">
                 <div id="cart-item-info">
                     <div class=cart-item-name>@item.Name</div>
                     <input class="cart-item-quantity" type="text" value="@quantity">
@@ -41,8 +41,14 @@
             </li>
         }
     </ul>
-    <p>Total Cost: <i class="fa fa-dollar-sign"></i> @totalCost</p>
-    <div class="btn" onclick="checkOut()">
-        Check Out
-    </div>
+    @if(Model.Items.Any())
+    {
+        <div>
+            <input id="promotionInput" type="text" /><span class="btn" onclick="addPromotion()">Add Promotion</span>
+        </div>
+        <p>Total Cost: <i class="fa fa-dollar-sign"></i> @totalCost</p>
+        <div class="btn" onclick="checkOut()">
+            Check Out
+        </div>
+    }
 </div>

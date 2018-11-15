@@ -7,18 +7,11 @@
 <div id="browse">
     <h1 class="heading">Browse</h1>
     <hr />
-    <div class="categoryMenus" id="categoryMenus">
-        <h3>Shop by Category:</h3>
-        <div class="category">
-            <img src="images/Placeholder.png" class="menuImg">
-            <span>Catagory Caption</span>
-        </div>
-    </div>
     <div id="results">
         @foreach (Item item in Model.Items)
         {
             <div class="results-item" onclick="routeToItem(@item.Id)">
-                <img class ="results-item-image" src="images/items/@item.ImageLOC">
+                <img class ="results-item-image" src="~/images/items/@item.ImageLOC">
                 <div class="results-item-name">@item.Name</div>
                 <div class="results-item-price">
                     <i class="fa fa-dollar-sign"></i>
