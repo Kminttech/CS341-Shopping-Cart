@@ -26,6 +26,10 @@ namespace cs341.Controllers
         /// Login
         public async Task<IActionResult> Login(string username, string password)
         {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            password = System.Text.Encoding.ASCII.GetString(data);
+
             User user =  await _context.Users
                 .SingleOrDefaultAsync(m => m.Username == username && m.Password == password);
             return user == null
@@ -36,6 +40,10 @@ namespace cs341.Controllers
         /// Register
         public IActionResult Register([Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
         {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(user.Password);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            user.Password = System.Text.Encoding.ASCII.GetString(data);
+
             _context.Add(user);
             _context.SaveChanges();
             return View("RegisterLoginView");
