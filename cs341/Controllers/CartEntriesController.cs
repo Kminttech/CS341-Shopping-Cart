@@ -24,10 +24,15 @@ namespace cs341.Controllers
 
         public void AddEntry([Bind("Id,EntryItemId,UserId,Quantity")] CartEntry cartEntry)
         {
-            if(cartEntry != null)
+            if (cartEntry != null)
             {
-                _context.Add(cartEntry);
-                _context.SaveChanges();
+                var dupEntry = _context.CartEntries.SingleOrDefault(e =>
+                    (e.UserId == cartEntry.UserId && e.EntryItemId == cartEntry.EntryItemId));
+                if (dupEntry == null)
+                {
+                    _context.Add(cartEntry);
+                    _context.SaveChanges();
+                }
             }
         }
 
@@ -50,15 +55,7 @@ namespace cs341.Controllers
 
         public ActionResult GetCart(int id, decimal? discount)
         {
-            List<CartEntry> entriesWithDup = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();
-            List<CartEntry> entries = new List<CartEntry>();
-            // remove duplicates
-            foreach (CartEntry entry in entriesWithDup)
-            {
-                if (!entries.Any(e => e.EntryItemId == entry.EntryItemId))
-                    entries.Add(entry);
-            }
-
+            List<CartEntry> entries = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();
             List <Item> items = new List<Item>();
             entries.ForEach(entry => items.Add(_context.Items.SingleOrDefault(item => item.Id == entry.EntryItemId)));
             CartViewModel cartView = new CartViewModel()
@@ -74,14 +71,7 @@ namespace cs341.Controllers
 
         public ActionResult SubmitOrder(int id)
         {
-            List<CartEntry> entriesWithDup = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();
-            List<CartEntry> entries = new List<CartEntry>();
-            // remove duplicates
-            foreach (CartEntry entry in entriesWithDup)
-            {
-                if (!entries.Any(e => e.EntryItemId == entry.EntryItemId))
-                    entries.Add(entry);
-            }
+            List<CartEntry> entries = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();
 
             // add orderNumber to CartEntries
             string orderNumber = System.Guid.NewGuid().ToString("D");
