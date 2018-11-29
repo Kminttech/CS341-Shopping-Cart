@@ -147,3 +147,7 @@ function routeToAdmin(){
 function dbRoute(path){
     route(path);
 }
+
+function routeToPromotions() {
+    route("/Promotions/GetPromoPage");
+}

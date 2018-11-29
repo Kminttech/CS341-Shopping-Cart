@@ -82,7 +82,23 @@ function updateQuantityInCart(cartId, elem, userId) {
 }
 
 function checkOut() {
-    alert("CHECKED OUT!");
+    //SubmitOrder
+    var userId = $("#user-id").val();
+     block("updating cart");
+    $.ajax({
+        type: "POST",
+        url: "/CartEntries/SubmitOrder",
+        data: { id: userId },
+        success: function (data) {
+            $("#main-content").html(data);
+        },
+        failure: function (data) {
+            //alert("Something went wrong :(");
+        },
+        error: function (data) {
+            //alert("Something went wrong :(");
+        }
+    }).always(unblock());
 }
 
 function addPromotion() {

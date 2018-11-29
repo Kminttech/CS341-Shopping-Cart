@@ -1,0 +1,59 @@
+﻿@*
+    PromoPage
+*@
+@using cs341.Models
+@model cs341.Models.PromoPageModel
+
+<div id="promoPage">
+    <h1 class="heading">Promotions</h1>
+    @if (!(Model.SaleItems.Any() || Model.Promotions.Any()))
+    {
+        <h2> No Promotions currently available! :( </h2>
+    }
+    <ul id="promo-container" class="list-group">
+        <h2>Sale Items</h2>
+        @foreach (Item item in Model.SaleItems)
+        {
+            <li class="promo-item well">
+                <img class="itemview-item-image img-thumbnail" src="~/images/items/@item.ImageLOC">
+                <div id="cart-item-info">
+                    <div class=cart-item-name>@item.Name</div>
+                    <div class=cart-item-price><s>@item.Price</s></div>
+                    <div class=cart-item-price>@item.SalePrice</div>
+                </div>
+                <div id="itemview-item-buttons">
+                    <div class="btn-sm btn-default" onclick="routeToItem(@item.Id)"><i class="fa fa-info"></i> Details</div>
+                </div>
+            </li>
+        }
+        <h2>Promo Codes</h2>
+        @foreach (Promotion promo in Model.Promotions)
+        {
+            <li class="promo-promo well">
+                <div id="promo-info">
+                    <div>
+                        <h3>Name</h3>
+                        <div class=promo-name>@promo.Name</div>
+                    </div>
+                    <div>
+                        <h3>Code</h3>
+                        <div class=promo-code>@promo.Code</div>
+                    </div>
+                    <div>
+                        <h3>Percent Off</h3>
+                        <div class=promo-percent>@promo.PercentOff</div>
+                    </div>
+                    <div>
+                        <h3>Start Date</h3>
+                        <div class=promo-start>@promo.StartDate</div>
+                    </div>
+                    <div>
+                        <h3>End Date</h3>
+                        <div class=promo-end>@promo.EndDate</div>
+                    </div>
+
+                </div>
+            </li>
+        }
+    </ul>
+</div>

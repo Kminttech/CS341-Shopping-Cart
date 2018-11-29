@@ -40,6 +40,7 @@ namespace cs341.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public string OrderId { get; set; }
         public int EntryItemId { get; set; }
         public int Quantity { get; set; }
     }
@@ -51,7 +52,6 @@ namespace cs341.Models
         public string Password { get; set; }
         public bool? IsAdmin { get; set; }
         public bool? IsGuest { get; set; }
-        public List<CartEntry> Cart { get; set; }
     }
 
     public class Promotion

@@ -18,9 +18,21 @@ namespace cs341.Controllers
             _context = context;
         }
 
-//////////////////////////////////////////////////////////////
-/// Client Calls
-//////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////
+        /// Client Calls
+        //////////////////////////////////////////////////////////////
+
+        public ActionResult GetPromoPage()
+        {
+            List<Promotion> promotions = _context.Promotions.ToList();
+            List<Item> saleItems = _context.Items.Where(item => item.SalePrice != null).ToList();
+            PromoPageModel model = new PromoPageModel()
+            {
+                SaleItems = saleItems,
+                Promotions = promotions
+            };
+            return View("PromoPage", model);
+        }
 
         public ActionResult AddPromotionToCart(string promoCode, int userId)
         {

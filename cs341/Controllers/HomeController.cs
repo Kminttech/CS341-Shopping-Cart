@@ -14,7 +14,6 @@ namespace cs341.Controllers
             Username = "Guest",
             IsAdmin = false,
             IsGuest = true,
-            Cart = new List<CartEntry>()
         };
         ////////////////////////////////////////////
 

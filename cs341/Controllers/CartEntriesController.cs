@@ -50,7 +50,7 @@ namespace cs341.Controllers
 
         public ActionResult GetCart(int id, decimal? discount)
         {
-            List<CartEntry> entriesWithDup = _context.CartEntries.Where(entry => entry.UserId == id).ToList();
+            List<CartEntry> entriesWithDup = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();
             List<CartEntry> entries = new List<CartEntry>();
             // remove duplicates
             foreach (CartEntry entry in entriesWithDup)
@@ -70,6 +70,28 @@ namespace cs341.Controllers
                 cartView.Discount = (decimal)discount;
 
             return View("CartView", cartView);
+        }
+
+        public ActionResult SubmitOrder(int id)
+        {
+            List<CartEntry> entriesWithDup = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();
+            List<CartEntry> entries = new List<CartEntry>();
+            // remove duplicates
+            foreach (CartEntry entry in entriesWithDup)
+            {
+                if (!entries.Any(e => e.EntryItemId == entry.EntryItemId))
+                    entries.Add(entry);
+            }
+
+            // add orderNumber to CartEntries
+            string orderNumber = System.Guid.NewGuid().ToString("D");
+            foreach (CartEntry entry in entries)
+            {
+                entry.OrderId = orderNumber;
+                _context.CartEntries.Update(entry);
+            }
+            _context.SaveChanges();
+            return View("CartView", new CartViewModel());
         }
 
 
