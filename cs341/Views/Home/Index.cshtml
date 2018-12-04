@@ -46,9 +46,19 @@
             }
         </div>
         <div id="navbarUser" class="user">
-            <span id="username">@Model.User.Username</span>
+            @if (Model.User.IsGuest != null && Model.User.IsGuest == true)
+            {
+                <span id="username">@Model.User.Username</span>
+                <i class="fa fa-lg fa-user"></i>
+            } else
+            {
+                <div id="account-btn" class="btn" onclick="routeToAccount()">
+                    @Model.User.Username
+                    <i class="fa fa-lg fa-user"></i>
+                </div>
+            }
+
             <input id="user-id" class="hide" type="text" value="@Model.User.Id"/>
-            <i class="fa fa-lg fa-user"></i>
             @if (Model.User.IsGuest != null && Model.User.IsGuest == true)
             {
                 <div id="login-btn" class="btn" onclick="toggleLogIn()">

@@ -124,3 +124,26 @@ $.ajax({
 function cartQuantityChange() {
     alert("not implemented yet");
 }
+
+function editAccount(userid) {
+    alert("not done yet");
+/*
+    var password = $("#passwordChange").val();
+    var billingAddress = $("#billingAddressChange").val();
+    block("Updating Account");
+    $.ajax({
+        type: "POST",
+        url: "/Users/UpdateAccount",
+        data: { userId: userId, password: password, billingAddress: billingAddress },
+        success: function (data) {
+            $("#main-content").html(data);
+        },
+        failure: function (data) {
+            //alert("Something went wrong :(");
+        },
+        error: function (data) {
+            //alert("Something went wrong :(");
+        }
+    }).always(unblock());
+*/
+}

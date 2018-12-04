@@ -52,6 +52,7 @@ namespace cs341.Models
         public string Password { get; set; }
         public bool? IsAdmin { get; set; }
         public bool? IsGuest { get; set; }
+        public string BillingAddress { get; set; }
     }
 
     public class Promotion

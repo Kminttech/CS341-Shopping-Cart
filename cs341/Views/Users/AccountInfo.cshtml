@@ -1,0 +1,23 @@
+﻿@model cs341.Models.User
+<h2>@Model.Username Account Info</h2>
+<div id="order-btn" class="btn" onclick="routeToOrders(@Model.Id)">
+    View Orders
+    <i class="fa fa-lg fa-box"></i>
+</div>
+<div class="editAccount">
+    <h2>Edit Account Info</h2>
+    <div class="col-md-4">
+        <div class="password">
+            <h4>Password</h4>
+            <input id="passwordChange" type="password" value="" />
+        </div>
+        <div class="billing">
+            <h4>Billing Address</h4>
+            <input id="billingAddressChange" type="text" value="@Model.BillingAddress"/>
+        </div>
+        <div id="save-btn" class="btn" onclick="editAccount(@Model.Id)">
+            Save
+            <i class="fa fa-lg fa-save"></i>
+        </div>
+    </div>
+</div>

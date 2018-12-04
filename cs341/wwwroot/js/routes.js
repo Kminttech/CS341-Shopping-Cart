@@ -151,3 +151,12 @@ function dbRoute(path){
 function routeToPromotions() {
     route("/Promotions/GetPromoPage");
 }
+
+function routeToAccount() {
+    var id = $("#user-id").val();
+    route("/Users/GetAccount", id);
+}
+
+function routeToOrders(userid){
+    alert("not done yet");
+}

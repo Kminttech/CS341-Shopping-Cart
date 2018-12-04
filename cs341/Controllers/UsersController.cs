@@ -63,9 +63,38 @@ namespace cs341.Controllers
             return RedirectToAction("Login", "Home", guest);
         }
 
-//////////////////////////////////////////////////////////////
-/// Admin Interaction
-//////////////////////////////////////////////////////////////
+        public IActionResult GetAccount(int id)
+        {
+            var user =  _context.Users.SingleOrDefault(m => m.Id == id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View("AccountInfo",user);
+        }
+
+        public IActionResult UpdateAccount(int userid, string password, string billingAddress)
+        {
+            User user = _context.Users.SingleOrDefault(u => u.Id == userid);
+            if(password != null)
+            {
+                byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+                data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+                user.Password = System.Text.Encoding.ASCII.GetString(data);
+            }
+            if (password != null)
+            {
+                user.BillingAddress = billingAddress;
+            }
+            _context.Update(user);
+            _context.SaveChangesAsync();
+
+            return View("EditSuccess");
+        }
+
+        //////////////////////////////////////////////////////////////
+        /// Admin Interaction
+        //////////////////////////////////////////////////////////////
 
         // GET: Users
         public async Task<IActionResult> Index()
@@ -102,7 +131,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Username,Password,IsAdmin,IsGuest,BillingAddress")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +163,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Password,IsAdmin,IsGuest")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Username,Password,IsAdmin,IsGuest,BillingAddress")] User user)
         {
             if (id != user.Id)
             {

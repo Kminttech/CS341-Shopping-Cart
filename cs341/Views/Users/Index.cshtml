@@ -27,6 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.IsGuest)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BillingAddress)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -47,6 +50,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsGuest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillingAddress)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
