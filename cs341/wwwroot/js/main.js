@@ -126,13 +126,11 @@ function cartQuantityChange() {
 }
 
 function editAccount(userid) {
-    alert("not done yet");
-/*
     var password = $("#passwordChange").val();
     var billingAddress = $("#billingAddressChange").val();
     block("Updating Account");
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "/Users/UpdateAccount",
         data: { userId: userId, password: password, billingAddress: billingAddress },
         success: function (data) {
@@ -145,5 +143,9 @@ function editAccount(userid) {
             //alert("Something went wrong :(");
         }
     }).always(unblock());
-*/
+}
+
+function filterResults(){
+    var query = $("#searchQuery").val();
+    alert("not done yet");
 }

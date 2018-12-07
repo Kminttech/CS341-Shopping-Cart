@@ -74,6 +74,11 @@ namespace cs341.Controllers
             return PartialView("RegisterView");
         }
 
+        public ActionResult GetManual()
+        {
+            return PartialView("Manual");
+        }
+
         public ActionResult Error(string error)
         {
             return View("Error", new ErrorViewModel { Error = error, User = _user });
