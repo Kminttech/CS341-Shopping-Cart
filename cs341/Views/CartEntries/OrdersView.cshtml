@@ -1,0 +1,15 @@
+﻿@using cs341.Models
+@model cs341.Models.OrdersModel
+
+<h1>Recent Orders</h1>
+@foreach(KeyValuePair<string, List<CartEntry>> order in @Model.Orders)
+{
+    <h2>order.Key</h2>
+    foreach(CartEntry entry in order.Value)
+    {
+        <h3>Item</h3>
+        <div>@entry.EntryItemId</div>
+        <h3>Quantity</h3>
+        <div>@entry.Quantity</div>
+    }
+}
