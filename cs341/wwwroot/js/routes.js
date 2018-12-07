@@ -160,3 +160,7 @@ function routeToAccount() {
 function routeToOrders(userid){
     alert("not done yet");
 }
+
+function routeToManual(){
+    route("/Home/GetManual");
+}
