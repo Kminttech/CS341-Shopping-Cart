@@ -81,13 +81,36 @@ namespace cs341.Controllers
                 _context.CartEntries.Update(entry);
             }
             _context.SaveChanges();
-            return View("CartView", new CartViewModel());
+            return View("OrderConfirmed");
+        }
+
+        public ActionResult GetOrders(int id)
+        {
+            Dictionary<string, List<CartEntry>> orders2 = new Dictionary<string, List<CartEntry>>();
+            List<CartEntry> orders = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId != null).ToList();
+            foreach(CartEntry entry in orders)
+            {
+                if (!orders2.ContainsKey(entry.OrderId))
+                {
+                    orders2.Add(entry.OrderId,new List<CartEntry>());
+                    orders2.SingleOrDefault(order => order.Key == entry.OrderId);
+                }
+                orders2.SingleOrDefault(order => order.Key == entry.OrderId);
+            }
+
+            OrdersModel ordersModel = new OrdersModel()
+            {
+                Orders = orders2
+            };
+
+            return View("OrdersView", ordersModel);
         }
 
 
-//////////////////////////////////////////////////////////////
-/// Admin Interaction
-//////////////////////////////////////////////////////////////
+
+        //////////////////////////////////////////////////////////////
+        /// Admin Interaction
+        //////////////////////////////////////////////////////////////
 
         // GET: CartEntries
         public async Task<IActionResult> Index()

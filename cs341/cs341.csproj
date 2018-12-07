@@ -55,6 +55,8 @@
     <Content Remove="wwwroot\js\EmptyJSFile.js" />
     <Content Remove="wwwroot\images\items\risk.jpg" />
     <Content Remove="wwwroot\images\items\catan.jpg" />
+    <Content Remove="wwwroot\images\items\lordsofwaterdeep.jpg" />
+    <Content Remove="wwwroot\images\items\pandemic.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\images\" />

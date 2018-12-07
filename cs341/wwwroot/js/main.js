@@ -86,7 +86,7 @@ function checkOut() {
     var userId = $("#user-id").val();
      block("updating cart");
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: "/CartEntries/SubmitOrder",
         data: { id: userId },
         success: function (data) {

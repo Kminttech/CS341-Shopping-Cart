@@ -157,8 +157,9 @@ function routeToAccount() {
     route("/Users/GetAccount", id);
 }
 
-function routeToOrders(userid){
-    alert("not done yet");
+function routeToOrders(){
+    var userId = $("#user-id").val();
+    route("/CartEntries/GetOrders", userId);
 }
 
 function routeToManual(){
