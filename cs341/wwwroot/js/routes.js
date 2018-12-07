@@ -159,7 +159,7 @@ function routeToAccount() {
 
 function routeToOrders(){
     var userId = $("#user-id").val();
-    route("/CartEntries/GetOrders", id);
+    route("/CartEntries/GetOrders", userId);
 }
 
 function routeToManual(){
