@@ -8,7 +8,7 @@ function unblock(){
 }
 
 function toggleLogIn() {
-  $("#login-content").toggleClass("hide");        
+  $("#login-content").toggleClass("hide");
 }
 
 function fadeoutContent(elem){
@@ -147,5 +147,16 @@ function editAccount(userid) {
 
 function filterResults(){
     var query = $("#searchQuery").val();
-    alert("not done yet");
+    var reg = new RegExp(query);
+    $(".results-item").each(function(){
+      console.log($(this));
+      var name = $(this).find(".results-item-name").html();
+      console.log(name);
+      console.log(String(reg));
+      if(!(String(name).match(reg)) && !($(this).hasClass("hide"))){
+        $(this).addClass("hide");
+      }else if(String(name).match(reg) && $(this).hasClass("hide")){
+        $(this).removeClass("hide");
+      }
+    });
 }
