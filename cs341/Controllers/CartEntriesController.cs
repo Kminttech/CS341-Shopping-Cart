@@ -27,7 +27,7 @@ namespace cs341.Controllers
             if (cartEntry != null)
             {
                 var dupEntry = _context.CartEntries.SingleOrDefault(e =>
-                    (e.UserId == cartEntry.UserId && e.EntryItemId == cartEntry.EntryItemId));
+                    (e.UserId == cartEntry.UserId && e.EntryItemId == cartEntry.EntryItemId && e.OrderId == null));
                 if (dupEntry == null)
                 {
                     _context.Add(cartEntry);
@@ -88,19 +88,24 @@ namespace cs341.Controllers
         {
             Dictionary<string, List<CartEntry>> orders2 = new Dictionary<string, List<CartEntry>>();
             List<CartEntry> orders = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId != null).ToList();
+            List<Item> items = new List<Item>();
             foreach(CartEntry entry in orders)
             {
                 if (!orders2.ContainsKey(entry.OrderId))
                 {
                     orders2.Add(entry.OrderId,new List<CartEntry>());
-                    orders2.SingleOrDefault(order => order.Key == entry.OrderId);
                 }
-                orders2.SingleOrDefault(order => order.Key == entry.OrderId);
+               orders2.SingleOrDefault(order => order.Key == entry.OrderId).Value.Add(entry);
+               if(items.SingleOrDefault(i => i.Id == entry.EntryItemId) == null)
+               {
+                   items.Add(_context.Items.SingleOrDefault(item => item.Id == entry.EntryItemId));
+               }
             }
 
             OrdersModel ordersModel = new OrdersModel()
             {
-                Orders = orders2
+                Orders = orders2,
+                Items = items
             };
 
             return View("OrdersView", ordersModel);

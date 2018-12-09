@@ -26,23 +26,12 @@ function addToCart(itemId) {
         addToCartBtn.removeClass("fa-cart-plus");
         addToCartBtn.addClass("fa-check");
     }
-    if(userId == -1){
-        updateCart();
-    } else{
-        addCartEntry(userId, itemId, quantity);
-    }
+    addCartEntry(userId, itemId, quantity);
 }
 
 function updateCart() {
-    var cartNotify = $("#cart-notify");
-    var quantity = $(".itemview-item-quantity>input").val();
-
-    if(cartNotify.hasClass("hide")){
-        cartNotify.removeClass("hide");
-    }
-
-    var num = Number(cartNotify.text()) + 1;
-    $("#cart-notify").text(num);
+    var cartNotify = $("#cart-btn");
+    cartNotify.fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 }
 
 function removeItemFromCart(cartId, userId) {
