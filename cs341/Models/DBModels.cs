@@ -44,6 +44,7 @@ namespace cs341.Models
         public string OrderId { get; set; }
         public int EntryItemId { get; set; }
         public int Quantity { get; set; }
+        public decimal? OrderTotal { get; set; }
     }
 
     public class User

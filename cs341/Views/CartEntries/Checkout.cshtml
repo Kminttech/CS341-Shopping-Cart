@@ -68,7 +68,7 @@
         totalCost = totalCost + taxAmount;
         <hr />
         <p>Total: <i class="fa fa-dollar-sign"></i>@totalCost.ToString("N", setPercision)</p>
-
+        <input id="cost-submit" class="hide" type="number" value="@totalCost.ToString("N", setPercision)" />
         <div class="btn btn-success" onclick="submitOrder()">
             Confirm
             <i class="fa fa-lg fa-check"></i>

@@ -3,27 +3,18 @@
 <h1>Recent Orders</h1>
 @foreach (KeyValuePair<string, List<CartEntry>> order in @Model.Orders)
 {
-    decimal? price = 0;
     <div class="well">
         <h2 class="text-center">Order #</h2>
         <h4 class="text-center">@order.Key</h4>
         @foreach (CartEntry entry in order.Value)
         {
-        var item = Model.Items.SingleOrDefault(i => i.Id == entry.EntryItemId);
-        if (item.SalePrice != null)
-        {
-        price += item.SalePrice;
-        }
-        else
-        {
-        price += item.Price;
-        }
-        <h3>@item.Name</h3>
-        <img class="itemview-item-image img-thumbnail" src="~/images/items/@item.ImageLOC">
-        <h3>Quantity</h3>
-        <div>@entry.Quantity</div>
+            var item = Model.Items.SingleOrDefault(i => i.Id == entry.EntryItemId);
+            <h3>@item.Name</h3>
+            <img class="itemview-item-image img-thumbnail" src="~/images/items/@item.ImageLOC">
+            <h3>Quantity</h3>
+            <div>@entry.Quantity</div>
         }
         <h3> Total Price </h3>
-        <div>@price</div>
+        <div><i class="fa fa-dollar-sign"></i>@order.Value.FirstOrDefault().OrderTotal</div>
     </div>
 }

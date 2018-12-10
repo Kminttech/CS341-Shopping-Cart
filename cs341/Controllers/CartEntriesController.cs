@@ -22,7 +22,7 @@ namespace cs341.Controllers
 /// Client Calls
 //////////////////////////////////////////////////////////////
 
-        public void AddEntry([Bind("Id,EntryItemId,UserId,Quantity")] CartEntry cartEntry)
+        public void AddEntry([Bind("Id,EntryItemId,UserId,Quantity,OrderId,OrderTotal")] CartEntry cartEntry)
         {
             if (cartEntry != null)
             {
@@ -85,14 +85,15 @@ namespace cs341.Controllers
             return View("Checkout", cartView);
         }
 
-        public ActionResult SubmitOrder(int id)
+        public ActionResult SubmitOrder(int id, decimal? cost)
         {
             List<CartEntry> entries = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();
 
-            // add orderNumber to CartEntries
+            // add orderNumber and total to CartEntries
             string orderNumber = System.Guid.NewGuid().ToString("D");
             foreach (CartEntry entry in entries)
             {
+                entry.OrderTotal = cost;
                 entry.OrderId = orderNumber;
                 _context.CartEntries.Update(entry);
             }
@@ -168,7 +169,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,EntryItemId,UserId,Quantity")] CartEntry cartEntry)
+        public async Task<IActionResult> Create([Bind("Id,EntryItemId,UserId,Quantity,OrderId,OrderTotal")] CartEntry cartEntry)
         {
             if (ModelState.IsValid)
             {
@@ -200,7 +201,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,EntryItemId,UserId,Quantity")] CartEntry cartEntry)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,EntryItemId,UserId,Quantit,OrderId,OrderTotal")] CartEntry cartEntry)
         {
             if (id != cartEntry.Id)
             {

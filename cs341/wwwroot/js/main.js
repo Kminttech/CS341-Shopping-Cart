@@ -101,11 +101,12 @@ function checkout() {
 function submitOrder() {
     //SubmitOrder
     var userId = $("#user-id").val();
+    var cost = $("#cost-submit").val();
      block("Checkout");
     $.ajax({
         type: "GET",
         url: "/CartEntries/SubmitOrder",
-        data: { id: userId },
+        data: { id: userId, cost: cost },
         success: function (data) {
             $("#main-content").html(data);
             domHandlers();
@@ -223,5 +224,14 @@ function domHandlers(){
                     document.getElementById("search-submit").click();
                   }
                 });
-        }
+    }
+
+    if(document.getElementById("promotionInput")){
+            document.getElementById("promotionInput").addEventListener("keyup", function(event) {
+                  event.preventDefault();
+                  if (event.keyCode === 13) {
+                    document.getElementById("promo-submit").click();
+                  }
+                });
+    }
 }
