@@ -1,88 +1,185 @@
-﻿<div>
-  <div>
-    <h1>Software for Online Shopping cart</h1>
-    <h2>User Manual</h2>
-    <h2>Developed by:</h2>
-    <h2>Evan Kirsch</h2>
-    <h2>Manning Meindel</h2>
-    <h2>Kevin Minter</h2>
-    <h2>Christian Strauss</h2>
-    <h1>Table of Contents</h1>
-  </div>
-  <div>
-    <ul>
-      <li>
-        Introduction
-        <ul>
-          <li>System Requirements</li>
-          <li>Installation</li>
-        </ul>
-      </li>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Coffee N Code</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.3.1//js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-      <li>
-        Getting Started
-      </li>
-      <li>
-        Cart Operations
+    <link rel="stylesheet" href="~/css/main.css">
+    <script src="~/js/routes.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/jquery.blockUI.js"></script>
+</head>
+<body>
+  <div id="manual">
+    <div>
+      <h1>Software for Online Shopping Cart Fall 2018 User Manual</h1>
+      <h1 class="us">Evan Kirsch, Manning Meindel, Kevin Minter, Christian Strauss</h1>
+      <br>
+      <br>
+      <h1>Table of Contents</h1>
+    </div>
+    <div>
+      <ul>
+        <li>
+          Introduction
+          <ul>
+            <li>System Requirements</li>
+            <li>Installation</li>
+          </ul>
+        </li>
+
+        <li>
+          Getting Started
+        </li>
+        <li>
+          Cart Operations
+          <ul>
+            <li>Add to Cart</li>
+            <li>Remove From Cart</li>
+            <li>Apply Promotion</li>
+          </ul>
+        </li>
+        <li>
+          Browsing Operations
+          <ul>
+            <li>Search</li>
+            <li>Promotions</li>
+          </ul>
+        </li>
+        <li>
+          User Operations
+          <ul>
+            <li>Login</li>
+            <li>Logout</li>
+            <li>Register</li>
+            <li>Update Account Information</li>
+            <li>View Order History</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h1>Introduction</h1>
+        <p>
+          This user manual describes how to use the web-page for the online shopping cart company Coffee and Code Board Games. This product is an online shopping cart. The user is able to create accounts and browse for board games. If they choose they can create an account. If they create an an account we will be able to store their shopping and the user will be able to retrieve it if they log back into their accounts. In addition users will be able to browse the promotions available to them if they order certain board games.
+        </p>
+      <h2>System Requirements</h2>
+        <p>
+          Users need to use Google Chrome 71.0.3578.XX, Chromium 1.0.154.XX, or Firefox 63.0.X
+        </p>
+      <h2>Installation</h2>
+        <p>
+          Users need to install a web browser listed in the system requirements section
+        </p>
+    </div>
+    <div>
+      <h1>Getting Started</h1>
+        <p>
+          The web page main functionality is being able to browse and buy board games. Users
+          will be able to do this as either a guest or as a registered user. Users will be automatically
+          logged in as guests.
+          <br>
+          Upon landing on the web page the user will be greeted by our iconic spinning icons. From here they are
+          able to choose seven different options.
+        </p>
         <ul>
-          <li>Add to Cart</li>
-          <li>Remove From Cart</li>
-          <li>Apply Promotion</li>
+          <li>
+            <b>Home</b> - Clicking this will take you back to our iconic spinning icons. users can navigate here if they wish to return to the homepage or simply want to be inspired by the spinning icons. This is the page for you if you like spinning icons as seen in Fig. 1.
+            <figure>
+              <img src="/images/manual/fig1.jpg" alt="home">
+              <figcaption>Fig.1 - Homepage</figcaption>
+            </figure>
+          </li>
+          <li>
+            <b>Manual</b> - Clicking this will take you to this page. It is very helpful to read this page, especially if you don't know how to use a web page. Using a web page is quite complicated and it is very important that users read this page before using the web page because of its overwhelming complexity as seen in Fig. 2.
+            <figure>
+              <img src="/images/manual/fig2.jpg" alt="fig2">
+              <figcaption>Fig.2 - The Manual Page</figcaption>
+            </figure>
+          </li>
+          <li>
+            <b>Promotions</b> - Clicking this will take you to our promotions page. From here you will be able to view all of our amazing promotions. This is the best page if you are looking to save money or are on a budget (See Fig. 3).
+            <figure>
+              <img src="/images/manual/fig3.jpg" alt="fig3">
+              <figcaption>Fig.3 - The Promotions page</figcaption>
+            </figure>
+          </li>
+          <li>
+            <b>Browse</b> - Clicking this will take you to browse plethora of board games ranging from Risk to Tragedy Looper. A different experience for everyone! You will be sure to find classics as well as hidden treasures! (See Fig. 4).
+            <figure>
+              <img src="/images/manual/fig4.jpg" alt="fig4">
+              <figcaption>Fig.4 - Browse Interface</figcaption>
+            </figure>
+          </li>
+          <li>
+            <b>Log In</b> - Clicking this will create a drop down menu with three options: username, password and submit. You should put your username in username, password in password and then click the submit button. This will log you into your account: given you have already created one. The page you are on doesn't matter, however, Fig. 5. shows the drop down on the home page
+            <figure>
+              <img src="/images/manual/fig5.jpg" alt="fig5">
+              <figcaption>Fig.5 - Login dropdown</figcaption>
+            </figure>
+          </li>
+          <li>
+            <b>Register</b> - Clicking this will take you to our register page.this page has three options: username, password and register. This is quite a bit more complicated than logging in as the requested information is not detailed in the box. To register the user needs to enter the information in the corresponding boxes and then click register. You can see what the page looks like in Fig. 6.
+            <figure>
+              <img src="/images/manual/fig6.jpg" alt="fig6">
+              <figcaption>Fig.6 - The Register page</figcaption>
+            </figure>
+          </li>
+          <li>
+            <b>Cart</b> - Clicking this will take you to your cart. If you have added items to the cart they will show up here. If you have not added any items to the cart you will be greeted by a lovely message. Be careful: if you browse as a guest and navigate away from the page, when you return your items will not be in the cart as seen in Fig. 7.
+            <figure>
+              <img src="/images/manual/fig7.jpg" alt="fig7">
+              <figcaption>Fig.7 - An Empty Cart Page</figcaption>
+            </figure>
+          </li>
         </ul>
-      </li>
-      <li>
-        Browsing Operations
-        <ul>
-          <li>Search</li>
-          <li>Promotions</li>
-        </ul>
-      </li>
-      <li>
-        User Operations
-        <li>Login</li>
-        <li>Logout</li>
-        <li>Register</li>
-      </li>
-    </ul>
+    </div>
+    <div>
+      <h1>Cart Operations</h1>
+      The cart is where you store items you would like to buy and then you will be able to place an order for all of your items at once. It is very similar to how you would use a cart in a grocery store. However, because this is online you may need some help to do so, Below are a few functions that you can do in order to put items into your cart or remove items from your cart.
+      <h2>Add to Cart</h2>
+      While adding items to your cart may at first sound quite simple it is actually quite complicated. First of all you must make sure you have an account registered with our website (see Register), and then login (see Login) in order to have your cart saved when you navigate away from the web page. While you can still add items to your cart, you may lose your cart so it is recommended that you register.
+      <br>
+      Whether you are registered or not the interface for adding an item to the cart is the same. After clicking on an item you will be taken to the items page. Here you will see a picture of the item, the price, a quick description, a Quantity text field and an "Add to Cart". Simply change the number in the Quantity bar to the number of the item you want, then click on the "Add to Cart" button and your item will be in your cart.
+      <h2>Remove from Cart</h2>
+      If you accidentally add an item to your cart and would like to remove it, navigate to your cart by clicking the cart button in the upper right hand corner of the screen. Then simply click the red "Delete" button with the little white trash can. Your item will then be removed. If you have no more items in your cart you will see the message from Fig. 7. If you can't see any of the items that are in your cart, make sure you are logged in!
+      <h2>Apply Promotion</h2>
+      The best part of shopping on our website is the amazing deals you get! To take advantage of these deals you will need to apply promotion codes when you are checking out. In order to do this you need to navigate to your cart by clicking the cart in the upper right hand corner, at the bottom of the page above the checkout button there will be a white box next to it there will be an "Add Promotion" button. Click on the white box next to the "Add Promotion" button, type in the super secret promotion code and then click the "Add Promotion" button. It will apply your promotion. If your code is invalid, or out of date a message will warn you. Otherwise, your promotion will be applied to the items it corresponds to in your cart.
+    </div>
+    <div>
+      <h1>Browsing Operations</h1>
+      In order to use the web page it is important that you are able to navigate and view not only the items on our website, but all the promotions and your own order history. This will give you all the tools you need in order to make an educated purchase on your next board game.
+      <h2>Search</h2>
+      Searching will be your primary means for finding the board games you are looking for, under the browse tab there will be a text box clearly labeled "Find What you Want HERE" next to a search button. Click on into the text box, you will then be able to to type the name of the game you would like to search for. After you click the "Search" button, any games with a name that includes any part of what you typed in the box will appear.
+      <h2>Promotions</h2>
+      If you are on a budget and want to look to see what games are on sale, click on the promotions tab. Here you will see a list of all the games that have a promotion applied to them. Following this list there will be another list of information about the promotions including the name, code, percent off, start date, and end date. Make careful note of the code, you will need it if you want to apply the code at checkout.
+    </div>
+    <div>
+      <h1>User Operations</h1>
+      Creating and using an account is imperative to getting the full benefit of using our website. In the upper right hand corner of the screen at the top of every page will be the current users user name, a login/logout button and a register button. These buttons will help you create and use an account.
+      <h2>Login</h2>
+      In order to log in you must already have an account. If you do not have an account set up see the "Register" section below. In order to log into your account click the login button next to the word "Guest" in the upper right hand corner. If you do not see the word "Guest" or see a log out button, you are already logged into an account. In order to log into a new account you will need to first log out, please see the logout section below.
+      <br>
+      If you see a login button click it, a drop down will appear prompting you for your username and password. After entering them in their corresponding boxes, click the submit button. If you entered your username and password correctly and have an account registered you will be logged into your account and "Guest" will change to a button with your username in it and you will be redirected to the homepage. Otherwise if you entered something incorrectly, you will receive an error message.
+      <h2>Logout</h2>
+      If you are logged into an account you will have the option to logout. In the upper right hand corner next to the button with your username in it click the "logout" button. You will then be logged out and redirected to the homepage as a guest user. If you have items in your cart they will be saved for the next time you log onto the web page.
+      <h2>Register</h2>
+      If you want to make an account so that items will be saved in your cart when you navigate away from the web page click the register button in the upper right hand corner. If you are already logged into an account this button will not be visible, you must first logout (see logout section above).
+      <br>
+      When you click on the register button you will be taken to a page with two fields, Username and Password. Enter your desired information in each box then click the submit button. Your account will be registered. If you would like to use your account. click the login button in the upper right hand corner of the screen. You will then be able to log in and add items to your cart.
+      <h2>Update Account Information</h2>
+      If you would like to update your account information you can do so by clicking on the button in the upper right hand corner with your username in it. If you are not logged in you will not see this button. You will need to log into the account you wish to edit before you are able to edit its information (see login section above).
+      <br>
+      Once you click on the button with your username on it you will be directed to a page that will allow you to view orders (see below), update your password, and update your billing address. If you wish to do these simply enter in the new information into the corresponding boxes and click the button with the save icon located below the text boxes. Your information will be saved.
+      <h2>View Order History</h2>
+      In order to view order history you will need to navigate to your account information page (see "Update Account Information" section above). Once there, simply click the "View Orders" button under Account info and will see a history of the orders you have made.
+    </div>
   </div>
-  <div>
-    <h1>Introduction</h1>
-      <p>
-        This user manual describes how to use the web-page for the online shopping cart
-        company Coffee and Code Board Games. This product is an online shopping cart. The
-        user is able to create accounts and browse for board games. If they choose they can
-        create an account. If they create an an account we will be able to store their shopping
-        and the user will be able to retrieve it if they log back into their accounts. In
-        addition users will be able to browse the promotions available to them if they order
-        certain board games.
-      </p>
-    <h2>System Requirements</h2>
-      <p>
-        Users need to use Google Chrome 71.0.3578.XX, Chromium 1.0.154.XX, or Firefox 63.0.X
-      </p>
-    <h2>Installation</h2>
-      <p>
-        Users need to install a web browser listed in the system requirements section
-      </p>
-  </div>
-  <div>
-    <h1>Getting Started</h1>
-      <p>
-        The web page main functionality is being able to browse and buy board games. Users
-        will be able to do this as either a guest or as a registered user. Users will be automatically
-        logged in as guests.
-        <br>
-        Upon landing on the web page the user will be greeted by our iconic spinning icons. From here they are
-        able to choose seven different options.
-        <ul>
-          <li><b>Home</b> - Clicking this will take you back to our iconic spinning icons. users can navigate here if they wish to return to the homepage or simply want to be inspired by the spinning icons. This is the page for you if you like spinning icons.</li>
-          <li><b>Manual</b> - Clicking this will take you to this page. It is very helpful to read this page, especially if you don't know how to use a web page. Using a web page is quite complicated and it is very important that users read this page before using the web page because of its overwhelming complexity</li>
-          <li><b>Promotions</b> - Clicking this will take you to our promotions page. From here you will be able to view all of our amazing promotions. This is the best page if you are looking to save money or are on a budget.</li>
-          <li><b>Browse</b> - Clicking this will take you to browse plethora of board games ranging from Risk to Tragedy Looper. A different experience for everyone! You will be sure to find classics as well as hidden treasures!</li>
-          <li><b>Log In</b> - Clicking this will create a drop down menu with three options: username, password and submit. You should put your username in username, password in password and then click the submit button. This will log you into your account: given you have already created one.</li>
-          <li><b>Register</b> - Clicking this will take you to our register page.this page has three options: username, password and register. This is quite a bit more complicated than logging in as the requested information is not detailed in the box. To register the user needs to enter the information in the corresponding boxes and then click register.</li>
-          <li><b>Cart</b> - Clicking this will take you to your cart. If you have added items to the cart they will show up here. If you have not added any items to the cart you will be greeted by a lovely message. Be careful: if you browse as a guest and navigate away from the page, when you return your items will not be in the cart.</li>
-        </ul>
-      </p>
-  </div>
-</div>
+</body>
+</html>

@@ -234,7 +234,7 @@ h1 {
 
 #cart-notify{
     position: fixed;
-    top: 7px; 
+    top: 7px;
     right: 7px;
 }
 
@@ -244,4 +244,35 @@ h1 {
 
 ul{
     list-style-type: none;
+}
+
+#manual ul {
+    list-style-type: square;
+}
+
+#manual ul ul{
+    list-style-type: circle;
+    margin-left: 5%;
+}
+
+#manual{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#manual img{
+    margin-left: 10%;
+    margin-top: 20px;
+    width: 80%;
+    border: 1px solid black;
+}
+
+#manual figcaption{
+    margin-left: 10%;
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+#manual .us{
+  font-size: .9em;
 }
