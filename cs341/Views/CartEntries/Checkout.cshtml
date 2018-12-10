@@ -1,0 +1,81 @@
+﻿@*
+    Checkout
+*@
+@using cs341.Models
+@using System.Globalization;
+@model cs341.Models.CartViewModel
+@{
+    decimal totalCost = 0;
+    decimal discount = Model.Discount;
+    string discountCost = "";
+    NumberFormatInfo setPercision = new NumberFormatInfo();
+    setPercision.NumberDecimalDigits = 2;
+}
+<h1 class="heading">Order Summary</h1>
+<div id="checkout-order" class="well">
+    <ul id="checkout-container" class="list-group">
+        @foreach (Item item in Model.Items)
+        {
+            int quantity = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Quantity;
+            int entryId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).Id;
+            int userId = @Model.Entries.SingleOrDefault(entry => entry.EntryItemId == item.Id).UserId;
+            decimal totalItemPrice = 0;
+            if (item.SalePrice != null)
+                totalItemPrice = (decimal)item.SalePrice * quantity;
+            else
+                totalItemPrice = item.Price * quantity;
+            totalCost += totalItemPrice;
+
+            <li class="checkout-item-description well">
+                <div id="checkout-item-info">
+                    <span class=checkout-item-name>@item.Name</span>
+                    <div>
+                        <span class="checkout-item-quantity"> @quantity </span>
+                        <i class="fa fa-lg fa-times"></i>
+                        @if (item.SalePrice != null)
+                        {
+                            <span class=checkout-item-price><i class="fa fa-dollar-sign"></i>@item.SalePrice</span>
+                        }
+                        else
+                        {
+                            <span class=checkout-item-price><i class="fa fa-dollar-sign"></i>@item.Price</span>
+                        }
+
+                        <hr />
+                        <div class=checkout-item-price><i class="fa fa-dollar-sign"></i>@totalItemPrice</div>
+                    </div>
+                </div>
+            </li>
+        }
+
+    </ul>
+    <hr />
+    @if (Model.Items.Any())
+    {
+        @if (discount != 0)
+        {
+            var discountAmount = (decimal)(totalCost * (discount));
+            discountCost = ((decimal)(totalCost * (1 - discount))).ToString("N", setPercision);
+
+            <p>Total Price: <i class="fa fa-dollar-sign"></i><s>@totalCost.ToString("N", setPercision)</s> </p>
+            totalCost = totalCost - discountAmount;
+            <p><i class="fa fa-minus"></i> Discount Applied: <i class="fa fa-dollar-sign"></i>@discountAmount.ToString("N", setPercision)</p>
+            <hr />
+        }
+        decimal taxAmount = (decimal)(totalCost * (decimal?).04);
+        <p>Subtotal: <i class="fa fa-dollar-sign"></i> @totalCost.ToString("N", setPercision)</p>
+        <p><i class="fa fa-plus"></i> Tax Applied: <i class="fa fa-dollar-sign"></i> @taxAmount.ToString("N", setPercision)</p>
+        totalCost = totalCost + taxAmount;
+        <hr />
+        <p>Total: <i class="fa fa-dollar-sign"></i>@totalCost.ToString("N", setPercision)</p>
+
+        <div class="btn btn-success" onclick="submitOrder()">
+            Confirm
+            <i class="fa fa-lg fa-check"></i>
+        </div>
+        <div class="btn btn-danger" onclick="routeToCart()">
+            Cancel
+            <i class="fa fa-lg fa-ban"></i>
+        </div>
+    }
+</div>

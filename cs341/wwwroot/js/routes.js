@@ -9,6 +9,7 @@ function route(page, id){
             dataType: "html",
             success: function (data) {
                 $("#main-content").html(data);
+                domHandlers();
             },
             failure: function (data) {
                 alert("Something went wrong");
@@ -31,6 +32,7 @@ function register(){
                 dataType: "html",
                 success: function (data) {
                     $("#main-content").html(data);
+                    domHandlers();
                 },
                 failure: function (data) {
                     alert("Something went wrong");
@@ -54,6 +56,7 @@ function logIn(){
             success: function (data) {
                 document.close();
                 document.write(data);
+                domHandlers();
             },
             failure: function (data) {
                 alert("Something went wrong");
@@ -75,7 +78,7 @@ function logOut(){
             success: function (data) {
                 document.close();
                 document.write(data);
-                user.isGuest == true;
+                domHandlers();
             },
             failure: function (data) {
                 alert("Something went wrong");
@@ -122,6 +125,7 @@ function routeToCart(){
                 dataType: "html",
                 success: function (data) {
                     $("#main-content").html(data);
+                    domHandlers();
                 },
                 failure: function (data) {
                     alert("Something went wrong");

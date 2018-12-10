@@ -7,10 +7,12 @@
 <div id="browse">
     <h1 class="heading">Browse</h1>
     <hr />
-    <input id="searchQuery" type="text" placeholder="Find What You Want HERE!">
-    <div class="btn" onclick="filterResults()">
-        Search
-        <i class="fa fa-lg fa-search"></i>
+    <div class="text-center">
+        <input id="searchQuery" style="width:200px" type="text" placeholder="Find What You Want HERE!">
+        <div id="search-submit" class="btn" onclick="filterResults()">
+            Search
+            <i class="fa fa-lg fa-search"></i>
+        </div>
     </div>
     <div id="results">
         @foreach (Item item in Model.Items)

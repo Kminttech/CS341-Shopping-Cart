@@ -24,7 +24,7 @@ namespace cs341.Controllers
 
         public IActionResult AllItems()
         {
-            List<Item> listItems = _context.Items.ToList();
+            List<Item> listItems = _context.Items.Where(i => i.InStore == null || i.InStore == true).ToList();
             if (listItems == null)
                 return RedirectToAction("Error", "Home", new { error = "Having trouble finding games :(" });
 
@@ -88,7 +88,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,SalePrice,ImageLOC")] Item item)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,Price,SalePrice,ImageLOC,InStore")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -120,7 +120,7 @@ namespace cs341.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,SalePrice,ImageLOC")] Item item)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,Price,SalePrice,ImageLOC,InStore")] Item item)
         {
             if (id != item.Id)
             {
@@ -174,7 +174,8 @@ namespace cs341.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var item = await _context.Items.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Items.Remove(item);
+            item.InStore = false;
+            _context.Update(item);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

@@ -69,6 +69,22 @@ namespace cs341.Controllers
             return View("CartView", cartView);
         }
 
+        public ActionResult Checkout(int id, decimal? discount)
+        {
+            List<CartEntry> entries = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();
+            List<Item> items = new List<Item>();
+            entries.ForEach(entry => items.Add(_context.Items.SingleOrDefault(item => item.Id == entry.EntryItemId)));
+            CartViewModel cartView = new CartViewModel()
+            {
+                Entries = entries,
+                Items = items,
+            };
+            if (discount != null)
+                cartView.Discount = (decimal)discount;
+
+            return View("Checkout", cartView);
+        }
+
         public ActionResult SubmitOrder(int id)
         {
             List<CartEntry> entries = _context.CartEntries.Where(entry => entry.UserId == id && entry.OrderId == null).ToList();

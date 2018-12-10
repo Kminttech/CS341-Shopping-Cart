@@ -27,6 +27,7 @@ namespace cs341.Models
         public decimal Price { get; set; }
         public decimal? SalePrice { get; set; }
         public string ImageLOC { get; set; }
+        public bool? InStore { get; set; }
     }
 
     public class Category

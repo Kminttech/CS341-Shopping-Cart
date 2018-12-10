@@ -27,6 +27,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ImageLOC)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InStore)
+                </th>
             <th></th>
         </tr>
     </thead>
@@ -47,6 +50,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ImageLOC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InStore)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

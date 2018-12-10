@@ -1,4 +1,8 @@
 ﻿// main
+window.onload=function(){
+    domHandlers();
+}
+
 function block(message){
     $.blockUI({ message: message + "  <i class='fa fa-spin fa-dice'></i>" });
 }
@@ -41,12 +45,13 @@ function removeItemFromCart(cartId, userId) {
         data: { cartId: cartId, userId: userId },
         success: function (data) {
             $("#main-content").html(data);
+            domHandlers();
         },
         failure: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         },
         error: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         }
     });
 }
@@ -60,32 +65,56 @@ function updateQuantityInCart(cartId, elem, userId) {
         data: { cartId: cartId, quantity: quantity, userId: userId },
         success: function (data) {
             $("#main-content").html(data);
+            domHandlers();
         },
         failure: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         },
         error: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         }
     }).always(unblock());
 }
 
-function checkOut() {
+function checkout() {
+    //Checkout
+    var userId = $("#user-id").val();
+    var promo = $("#promo-amount").val();
+     block("updating cart");
+    $.ajax({
+        type: "GET",
+        url: "/CartEntries/Checkout",
+        data: { id: userId, discount: promo },
+        success: function (data) {
+            $("#main-content").html(data);
+            domHandlers();
+        },
+        failure: function (data) {
+            alert("Something went wrong :(");
+        },
+        error: function (data) {
+            alert("Something went wrong :(");
+        }
+    }).always(unblock());
+}
+
+function submitOrder() {
     //SubmitOrder
     var userId = $("#user-id").val();
-     block("updating cart");
+     block("Checkout");
     $.ajax({
         type: "GET",
         url: "/CartEntries/SubmitOrder",
         data: { id: userId },
         success: function (data) {
             $("#main-content").html(data);
+            domHandlers();
         },
         failure: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         },
         error: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         }
     }).always(unblock());
 }
@@ -100,12 +129,13 @@ $.ajax({
         data: { promoCode: promoCode, userId: userId },
         success: function (data) {
             $("#main-content").html(data);
+            domHandlers();
         },
         failure: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         },
         error: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         }
     }).always(unblock());
 }
@@ -124,19 +154,20 @@ function editAccount(userid) {
         data: { userId: userId, password: password, billingAddress: billingAddress },
         success: function (data) {
             $("#main-content").html(data);
+            domHandlers();
         },
         failure: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         },
         error: function (data) {
-            //alert("Something went wrong :(");
+            alert("Something went wrong :(");
         }
     }).always(unblock());
 }
 
 function filterResults(){
     var query = $("#searchQuery").val();
-    var reg = new RegExp(query);
+    var reg = new RegExp(query, 'i');
     $(".results-item").each(function(){
       console.log($(this));
       var name = $(this).find(".results-item-name").html();
@@ -148,4 +179,49 @@ function filterResults(){
         $(this).removeClass("hide");
       }
     });
+}
+
+function domHandlers(){
+    if(document.getElementById("usernameInput")){
+        document.getElementById("usernameInput").addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            document.getElementById("login-submit").click();
+          }
+        });
+    }
+
+    if(document.getElementById("passwordInput")){
+        document.getElementById("passwordInput").addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            document.getElementById("login-submit").click();
+          }
+        });
+    }
+    if(document.getElementById("registerUsername")){
+        document.getElementById("registerUsername").addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            document.getElementById("register-submit").click();
+          }
+        });
+    }
+
+    if(document.getElementById("registerPassword")){
+        document.getElementById("registerPassword").addEventListener("keyup", function(event) {
+              event.preventDefault();
+              if (event.keyCode === 13) {
+                document.getElementById("register-submit").click();
+              }
+            });
+    }
+    if(document.getElementById("searchQuery")){
+            document.getElementById("searchQuery").addEventListener("keyup", function(event) {
+                  event.preventDefault();
+                  if (event.keyCode === 13) {
+                    document.getElementById("search-submit").click();
+                  }
+                });
+        }
 }

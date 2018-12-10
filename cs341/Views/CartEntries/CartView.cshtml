@@ -5,7 +5,7 @@
 @using System.Globalization;
 @model cs341.Models.CartViewModel
 @{
-    decimal totalCost = 0;
+ decimal totalCost = 0;
  decimal? discount = Model.Discount;
  string discountCost = "";
 }
@@ -63,8 +63,9 @@
             discountCost = ((decimal)(totalCost * (1 - discount))).ToString("N", setPercision);
             <p>Total Cost: <i class="fa fa-dollar-sign"></i> <s>@totalCost</s> @discountCost</p>
         }
-        <div class="btn" onclick="checkOut()">
+        <div class="btn" onclick="checkout()">
             Check Out
         </div>
+        <input class="hide" id="promo-amount" type="number" value="@discount"/>
     }
 </div>

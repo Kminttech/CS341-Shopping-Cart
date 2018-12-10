@@ -37,9 +37,28 @@ namespace cs341.Controllers
         public ActionResult AddPromotionToCart(string promoCode, int userId)
         {
             Promotion promo = _context.Promotions.SingleOrDefault(m => m.Code == promoCode);
-            return promo == null
-                ? (ActionResult)Json("<h1>Promo Code doesn't exist!</h1>")
-                : RedirectToAction("GetCart", "CartEntries", new { id = userId, discount = promo.PercentOff });
+            if(promo == null)
+            {
+                return (ActionResult)Json("<h1>Promo Code doesn't exist!</h1>");
+            }
+
+            DateTime currentTime = DateTime.Today;
+            DateTime startDate = DateTime.Parse(promo.StartDate,
+                                      System.Globalization.CultureInfo.InvariantCulture);
+            DateTime endDate = DateTime.Parse(promo.EndDate,
+                                      System.Globalization.CultureInfo.InvariantCulture);
+
+            if(currentTime.CompareTo(startDate) < 0)
+            {
+                return (ActionResult)Json("<h1>Promo Code hasn't started yet :(</h1>");
+            }
+
+            if (currentTime.CompareTo(endDate) > 0)
+            {
+                return (ActionResult)Json("<h1>Promo Code has expired :(</h1>");
+            }
+
+            return RedirectToAction("GetCart", "CartEntries", new { id = userId, discount = promo.PercentOff });
         }
 
 //////////////////////////////////////////////////////////////
